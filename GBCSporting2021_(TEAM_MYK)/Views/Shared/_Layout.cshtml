@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title = "GBCSporting2021__TEAM_MYK_"</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <h1>SportsPro</h1>
+        <nav>
+            <ul>
+                <li><a>Home</a></li>
+                <li><a>Products</a></li>
+                <li><a>Technicians</a></li>
+                <li><a>Customers</a></li>
+                <li><a>Incidents</a></li>
+                <li><a>Registrations</a></li>
+                <li><a>About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+</body>
+</html>
