@@ -1,9 +1,9 @@
 ﻿@model Product
 @{
-    ViewBag.Title = "Add/Edit Page";
+    ViewBag.Title = "Edit";
 }
 
-<form asp-controller="Product" asp-action="Edit" method="post" class="border">
+<form asp-action="Edit" method="post" class="border">
     <div>
         <label asp-for="Code">Code</label>
         <input asp-for="Code" />
@@ -16,11 +16,13 @@
         <label asp-for="Price">Price</label>
         <input asp-for="Price" />
     </div>
+    <div>
         <label asp-for="ReleaseDate">Released Date</label>
         <input asp-for="ReleaseDate" />
+    </div>
+    <input type="hidden" asp-for="ProductId" />
     <div>
-        <label asp-for="Price">Price</label>
-        <button type="submit">Submit</button>
+        <button type="submit">@ViewBag.Action</button>
         <a asp-action="List">Cancel</a>
     </div>
 </form>
