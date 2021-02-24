@@ -34,6 +34,9 @@ namespace GBCSporting2021__TEAM_MYK_
             services.AddControllersWithViews();
 
             services.AddDbContext<ProductContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ProductContext")));
+            services.AddDbContext<TechnicianContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TechnicianContext")));
+            services.AddDbContext<CustomerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CustomerContext")));
+            services.AddDbContext<IncidentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("IncidentContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
