@@ -16,10 +16,13 @@
         <label asp-for="Price">Price</label>
         <input asp-for="Price" />
     </div>
+    <div>
         <label asp-for="ReleaseDate">Released Date</label>
         <input asp-for="ReleaseDate" />
+    </div>
+    <input type="hidden" asp-for="ProductId" />
     <div>
-        <button type="submit">Add</button>
+        <button type="submit">@ViewBag.Action</button>
         <a asp-action="List">Cancel</a>
     </div>
 </form>

@@ -30,7 +30,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.Action = "Edit";
+            ViewBag.Action = "Add";
             return View("Edit", new Product());
         }
         [HttpGet]
@@ -56,13 +56,11 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpPost]
         public IActionResult Edit(Product product)
         {
-            string action = (product.ProductId == 0) ? "Add" : "Edit";
-
             if (ModelState.IsValid)
             {
-                if (action == "Add")
+                if (product.ProductId == 0)
                 {
-                    context.Products.Add(product);
+                    context.Products.Update(product);
                 }
                 else
                 {
@@ -73,9 +71,12 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             }
             else
             {
-                ViewBag.Action = action;
-                return RedirectToAction("Index", "Home");
+                ViewBag.Action = (product.ProductId == 0) ? "Add" : "Edit";
+                return View(product);
             }
+
+
+
         }
         [HttpPost, ActionName("Delete")]
         public IActionResult Delete(int id)
