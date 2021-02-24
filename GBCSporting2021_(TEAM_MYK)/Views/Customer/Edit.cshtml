@@ -1,24 +1,42 @@
-﻿@model Product
+﻿@model Customer
 @{
     ViewBag.Title = "Add/Edit Page";
 }
 
 <form asp-action="Edit" method="post" class="border">
     <div>
-        <label asp-for="Code">Code</label>
-        <input asp-for="Code" />
+        <label asp-for="Firstname">Firstname</label>
+        <input asp-for="Firstname" />
     </div>
     <div>
-        <label asp-for="Name">Name</label>
-        <input asp-for="Name" />
+        <label asp-for="Lastname">Lastname</label>
+        <input asp-for="Lastname" />
     </div>
     <div>
-        <label asp-for="Price">Price</label>
-        <input asp-for="Price" />
+        <label asp-for="Address">Address</label>
+        <input asp-for="Address" />
     </div>
-    <input asp-for="ReleaseDate" />
     <div>
-        <label asp-for="Price">Price</label>
+        <label asp-for="City">City</label>
+    </div>
+    <div>
+        <label asp-for="State">State</label>
+        <input asp-for="State" />
+    </div>
+    <div>
+        <label asp-for="Postalcode">Postal Code</label>
+        <input asp-for="Postalcode" />
+    </div>
+    <div>
+        <select asp-for="Country" asp-items="Model.Country.Countries"></select>
+    </div>
+    <div>
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" />
+    </div>
+    <div>
+        <label asp-for="Phone">Phone</label>
+        <input asp-for="Phone" />
         <button type="submit">Submit</button>
         <a asp-action="List">Cancel</a>
     </div>
