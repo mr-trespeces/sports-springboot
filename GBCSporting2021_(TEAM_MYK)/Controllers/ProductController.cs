@@ -67,7 +67,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
                     context.Products.Update(product);
                 }
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("List", "Product");
             }
             else
             {
