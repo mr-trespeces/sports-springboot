@@ -1,38 +1,39 @@
-﻿using GBCSporting2021__TEAM_MYK_.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using GBCSporting2021__TEAM_MYK_.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GBCSporting2021__TEAM_MYK_.Controllers
 {
-    public class ProductController : Controller
+    public class CustomerController : Controller
     {
-
         private SportingContext context { get; set; }
 
-        public ProductController(SportingContext ctx)
+        public CustomerController(SportingContext ctx)
         {
             context = ctx;
         }
         [HttpGet]
         public IActionResult List()
         {
-            var product = context.Products;
-            return View("List", product);
+            var customer = context.Customers;
+            return View("List", customer);
         }
         [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Action = "Edit";
-            return View("Edit", new Product());
+            return View("Edit", new Customer());
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            var product = context.Products
-                .FirstOrDefault(c => c.ProductId == id);
-            return View(product);
+            var customer = context.Customers
+                .FirstOrDefault(c => c.CustomerId == id);
+            return View(customer);
         }
         [HttpGet]
         public IActionResult Delete(int? id)
@@ -41,7 +42,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            Product prod = context.Products.Find(id);
+            Customer prod = context.Customers.Find(id);
             if (prod == null)
             {
                 return RedirectToAction("Index", "Home");
@@ -49,19 +50,19 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             return View("Delete");
         }
         [HttpPost]
-        public IActionResult Edit(Product product)
+        public IActionResult Edit(Customer customer)
         {
-            string action = (product.ProductId == 4) ? "Edit" : "Edit";
+            string action = (customer.CustomerId == 4) ? "Edit" : "Edit";
 
             if (ModelState.IsValid)
             {
                 if (action == "Add")
                 {
-                    context.Products.Add(product);
+                    context.Customers.Add(customer);
                 }
                 else
                 {
-                    context.Products.Update(product);
+                    context.Customers.Update(customer);
                 }
                 context.SaveChanges();
                 return RedirectToAction("Index", "Home");
@@ -75,10 +76,10 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult Delete(int id)
         {
-            Product product = context.Products.Find(id);
-            context.Products.Remove(product);
+            Customer customer = context.Customers.Find(id);
+            context.Customers.Remove(customer);
             context.SaveChanges();
-            return RedirectToAction("List", "Product");
+            return RedirectToAction("List", "customer");
         }
     }
 }

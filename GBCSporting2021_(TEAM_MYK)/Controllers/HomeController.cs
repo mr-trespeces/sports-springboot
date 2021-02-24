@@ -9,9 +9,9 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
 {
     public class HomeController : Controller
     {
-        private ProductContext context { get; set; }
+        private SportingContext context { get; set; }
 
-        public HomeController(ProductContext ctx)
+        public HomeController(SportingContext ctx)
         {
             context = ctx;
         }
