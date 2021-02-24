@@ -21,26 +21,35 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                 new Incident
                 {
                     IncidentId = 1,
-                    Title = "Hello",
-                    Customer = "YP",
-                    Product = "This",
-                    DateOpened = "10-15-2002"
+                    CustomerId = 1,
+                    ProductId = 1,
+                    Title = "Could not fix",
+                    Description = "Hello :)",
+                    TechnicianId = 1,
+                    DateOpened = "9-2-2012",
+                    DateClosed = "1-14-2013"
                 },
                 new Incident
                 {
                     IncidentId = 2,
-                    Title = "Hi",
-                    Customer = "Mark",
-                    Product = "That",
-                    DateOpened = "2-18-2010"
+                    CustomerId = 2,
+                    ProductId = 2,
+                    Title = "Could not open",
+                    Description = "Hi :(",
+                    TechnicianId = 2,
+                    DateOpened = "5-21-1992",
+                    DateClosed = "8-19-2012"
                 },
                 new Incident
                 {
                     IncidentId = 3,
-                    Title = "Yes",
-                    Customer = "Kent",
-                    Product = "Those",
-                    DateOpened = "12-15-2011"
+                    CustomerId = 3,
+                    ProductId = 3,
+                    Title = "Could not turn on",
+                    Description = "Yes ./.",
+                    TechnicianId = 3,
+                    DateOpened = "12-3-2017",
+                    DateClosed = "3-18-2019"
                 });
         }
     }

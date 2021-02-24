@@ -24,7 +24,7 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     Code = "QWE123",
                     Name = "TV",
                     Price = "$999.99",
-                    ReleaseDate = DateTime.Now
+                    ReleaseDate = "12-12-2020"
                 },
                 new Product
                 {
@@ -32,7 +32,7 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     Code = "ASD456",
                     Name = "Sofa",
                     Price = "$555.55",
-                    ReleaseDate = DateTime.Now
+                    ReleaseDate = "11-13-2012"
                 },
                 new Product
                 {
@@ -40,7 +40,7 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     Code = "ZXC789",
                     Name = "Laptop",
                     Price = "$2.00",
-                    ReleaseDate = DateTime.Now
+                    ReleaseDate = "2-23-2018"
                 });
         }
     }
