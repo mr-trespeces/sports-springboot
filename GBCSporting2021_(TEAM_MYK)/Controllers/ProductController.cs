@@ -42,11 +42,16 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             return View(product);
         }
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int? id)
         {
-            var product = context.Products
-                .FirstOrDefault(c => c.ProductId == id);
-            return View("Delete", product);
+            if (id == null)
+            {
+            }
+            Product prod = context.Products.Find(id);
+            if (prod == null)
+            {
+            }
+            return View("Delete");
         }
         [HttpPost]
         public IActionResult Edit(Product product)
@@ -72,9 +77,11 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-        [HttpPost]
-        public IActionResult Delete(Product product)
+        [HttpPost, ActionName("Delete")]
+        public IActionResult Delete(int id)
         {
+
+            Product product = context.Products.Find(id);
             context.Products.Remove(product);
             context.SaveChanges();
             return RedirectToAction("List", "Product");

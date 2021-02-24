@@ -19,8 +19,6 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
 
         public IActionResult Index()
         {
-            
-
             return View();
         }
     }
