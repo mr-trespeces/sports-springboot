@@ -19,6 +19,6 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         [Required(ErrorMessage = "Please enter a valid price")]
         public string Price { get; set; }
 
-        public string ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
     }
 }

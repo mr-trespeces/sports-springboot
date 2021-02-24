@@ -22,25 +22,25 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                 {
                     ProductId = 1,
                     Code = "QWE123",
-                    Name = "YP",
+                    Name = "TV",
                     Price = "$999.99",
-                    ReleaseDate = "10/23/1996"
+                    ReleaseDate = DateTime.Now
                 },
                 new Product
                 {
                     ProductId = 2,
                     Code = "ASD456",
-                    Name = "Mark",
+                    Name = "Sofa",
                     Price = "$555.55",
-                    ReleaseDate = "2/11/1997"
+                    ReleaseDate = DateTime.Now
                 },
                 new Product
                 {
                     ProductId = 3,
                     Code = "ZXC789",
-                    Name = "Kent",
+                    Name = "Laptop",
                     Price = "$2.00",
-                    ReleaseDate = "6/2/1963"
+                    ReleaseDate = DateTime.Now
                 });
         }
     }

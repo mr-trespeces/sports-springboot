@@ -21,22 +21,22 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                 new Technician
                 {
                     TechnicianId = 1,
-                    Name = "YP",
-                    Email = "youngpyung.yoo@georgebrown.ca",
+                    Name = "Technician1",
+                    Email = "tech1@georgebrown.ca",
                     Phone = "4168540113"
                 },
                 new Technician
                 {
                     TechnicianId = 2,
-                    Name = "Kent",
-                    Email = "kent.ped@gerogebrown.ca",
+                    Name = "Technician2",
+                    Email = "tech2@gerogebrown.ca",
                     Phone = "4167542904"
                 },
                 new Technician
                 {
                     TechnicianId = 3,
-                    Name = "Mark",
-                    Email = "mark.tres@georgebrown.ca",
+                    Name = "Technician3",
+                    Email = "tech3@georgebrown.ca",
                     Phone = "4167125209"
                 });
         }
