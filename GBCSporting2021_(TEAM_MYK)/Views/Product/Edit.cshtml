@@ -1,9 +1,9 @@
 ﻿@model Product
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Add/Edit Page";
 }
 
-<form asp-action="Edit" method="post" class="border">
+<form asp-controller="Product" asp-action="Edit" method="post" class="border">
     <div>
         <label asp-for="Code">Code</label>
         <input asp-for="Code" />
