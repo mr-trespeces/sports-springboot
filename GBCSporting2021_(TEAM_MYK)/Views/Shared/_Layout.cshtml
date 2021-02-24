@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,13 +12,13 @@
         <h1>SportsPro</h1>
         <nav>
             <ul>
-                <li><a>Home</a></li>
+                <li><a asp-controller="" asp-action="">Home</a></li>
                 <li><a asp-controller="Product" asp-action="List">Products</a></li>
-                <li><a>Technicians</a></li>
-                <li><a>Customers</a></li>
-                <li><a>Incidents</a></li>
-                <li><a>Registrations</a></li>
-                <li><a>About</a></li>
+                <li><a asp-controller="Technician" asp-action="">Technicians</a></li>
+                <li><a asp-controller="Customer" asp-action="">Customers</a></li>
+                <li><a asp-controller="Incident" asp-action="">Incidents</a></li>
+                <li><a asp-controller="" asp-action="">Registrations</a></li>
+                <li><a asp-controller="" asp-action="">About</a></li>
             </ul>
         </nav>
     </header>
