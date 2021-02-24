@@ -14,6 +14,9 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         public HomeController(ProductContext ctx)
         {
             context = ctx;
+            // hello
+            // hi
+            // hiiiii
         }
 
         public IActionResult Index()
