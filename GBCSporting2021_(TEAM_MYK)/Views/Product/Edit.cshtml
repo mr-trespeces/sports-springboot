@@ -1,0 +1,24 @@
+﻿@model Product
+@{
+    ViewBag.Title = "Edit";
+}
+
+<form asp-action="Edit" method="post" class="border">
+    <div>
+        <label asp-for="Code">Code</label>
+        <input asp-for="Code" />
+    </div>
+    <div>
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" />
+    </div>
+    <input asp-for="ReleaseDate" />
+    <div>
+        <button type="submit">Add</button>
+        <a asp-action="List">Cancel</a>
+    </div>
+</form>

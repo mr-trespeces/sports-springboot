@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewBag.Title = "SportsPro Technical Support";
+}
+
+<a asp-controller="Product" asp-action="Add">Add Contact</a>
+<table>
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Release Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Product product in Model)
+        {
+        <tr>
+            <td>@product.Code</td>
+            <td>@product.Name</td>
+            <td>@product.Price</td>
+            <td>@product.ReleaseDate</td>
+            <td>
+                <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.ProductId">Edit</a>
+            </td>
+            <td>
+                <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.ProductId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
