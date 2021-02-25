@@ -1,6 +1,5 @@
 ﻿using GBCSporting2021__TEAM_MYK_.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace GBCSporting2021__TEAM_MYK_.Controllers
