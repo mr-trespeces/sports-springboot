@@ -3,29 +3,29 @@
     ViewBag.Title = "SportsPro Technical Support";
 }
 
-<a asp-controller="Customer" asp-action="Add">Add Contact</a>
-<table>
+<table class="table">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>City</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">City</th>
         </tr>
     </thead>
     <tbody>
-        @foreach(Customer customer in Model)
+        @foreach (Customer customer in Model)
         {
-        <tr>
-            <td>@customer.Firstname</td>
-            <td>@customer.Email</td>
-            <td>@customer.City</td>
-            <td>
-                <a asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustomerId">Edit</a>
-            </td>
-            <td>
-                <a asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustomerId">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>@customer.Firstname</td>
+                <td>@customer.Email</td>
+                <td>@customer.City</td>
+                <td>
+                    <a asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustomerId">Edit</a>
+                </td>
+                <td>
+                    <a asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustomerId">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+<a asp-controller="Customer" asp-action="Add">Add Contact</a>

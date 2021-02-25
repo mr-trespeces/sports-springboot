@@ -5,14 +5,64 @@
 <h1>SportsPro Technical Support</h1>
 <h2>Sports management software for the sports enthusiast</h2>
 <br />
-
 <h3>Admin</h3>
-<div><a asp-controller="Product" asp-action="List">Manage Products</a></div>
-<div><a asp-controller="Technician" asp-action="">Manage Technicians</a></div>
-<div><a asp-controller="Customer" asp-action="">Manage Customers</a></div>
-<div><a asp-controller="Incident" asp-action="">Manage Incidents</a></div>
-<div><a asp-controller="" asp-action="">Manage Registrations</a></div>
-<br />
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <div class="card border-secondary mb-1" style="max-width: 18rem;">
+            <div class="card-header"><a asp-controller="Product" asp-action="List">Manage Products</a></div>
+            <div class="card-body text-secondary">
+                <h5 class="card-title">Products that keeps us alive</h5>
+                <p class="card-text">Managing products with our website is so EASY!</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-secondary mb-1" style="max-width: 18rem;">
+            <div class="card-header"><a asp-controller="Technician" asp-action="List">Manage Technicians</a></div>
+            <div class="card-body text-secondary">
+                <h5 class="card-title">Technicians can fix your problem.</h5>
+                <p class="card-text">Wanna manage technician? I am here to guide you!</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-secondary mb-1" style="max-width: 18rem;">
+            <div class="card-header"><a asp-controller="Customer" asp-action="List">Manage Customers</a></div>
+            <div class="card-body text-secondary">
+                <h5 class="card-title">Customer can help us grow</h5>
+                <p class="card-text">Add, edit and delete customers. You can do everything if you click me!</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-secondary mb-1" style="max-width: 18rem;">
+            <div class="card-header"><a asp-controller="Incident" asp-action="List">Manage Incidents</a></div>
+            <div class="card-body text-secondary">
+                <h5 class="card-title">Incidents can be fixed by us!</h5>
+                <p class="card-text">Someone complaint? I am here to help you fix that!</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-secondary mb-1" style="max-width: 18rem;">
+            <div class="card-header">Manage Registration</div>
+            <div class="card-body text-secondary">
+                <h5 class="card-title">Registration for customer</h5>
+                <p class="card-text">Add registration whenever you want to add. Register anythiiing</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <h3>Technicians</h3>
-<div><a asp-controller="" asp-action="">Update Incidents</a></div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <div class="card border-secondary mb-1" style="max-width: 18rem;">
+            <div class="card-header"><a asp-controller="Technician" asp-action="List">Update Technicians</a></div>
+            <div class="card-body text-secondary">
+                <h5 class="card-title">Technicians can fix your problem.</h5>
+                <p class="card-text">Wanna manage technician? I am here to guide you!</p>
+            </div>
+        </div>
+    </div>
+</div>
