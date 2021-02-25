@@ -28,12 +28,12 @@
         <div class="col-md-6">
             <label asp-for="State" class="form-label">State</label>
             <input asp-for="State" class="form-control" required>
-        <span asp-validation-for="State"></span>
+            <span asp-validation-for="State"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="Postalcode" class="form-label">Postal Code</label>
             <input asp-for="Postalcode" class="form-control" required>
-        <span asp-validation-for="Postalcode"></span>
+            <span asp-validation-for="Postalcode"></span>
         </div>
         <div>
             <label class="form-label">    </label>
@@ -50,7 +50,7 @@
                         }
                         else
                         {
-                            <option value="@country.CountryId">@country.Name</option>
+                            <option value="@country.CountryId" selected>@country.Name</option>
                         }
                     }
                 </select>

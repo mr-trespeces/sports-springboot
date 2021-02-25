@@ -32,9 +32,6 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         public string Postalcode { get; set; }
 
         [Range(1, 10, ErrorMessage = "Please select a country")]
-        [Required]
-        [ForeignKey("Country")]
-        [DisplayName("Country")]
         public int CountryId { get; set; }
 
         public string Email { get; set; }
