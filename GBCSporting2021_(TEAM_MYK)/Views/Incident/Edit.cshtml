@@ -1,0 +1,65 @@
+﻿@model Incident
+
+@{
+    ViewBag.Title = "Add/Edit Page";
+}
+
+<form asp-controller="Incident" asp-action="Edit" method="post" class="border">
+    <div>
+        <label>Customer</label>
+        <select id="Customer">
+            @foreach (Customer customer in ViewBag.Customers)
+            {
+                @if (Model.CustomerId == customer.CustomerId)
+                {
+                    <option value="@customer.Firstname @customer.Lastname" selected>@customer.Firstname @customer.Lastname</option>
+                }
+                else
+                {
+                    <option value="@customer.Firstname @customer.Lastname">@customer.Firstname @customer.Lastname</option>
+                }
+            }
+        </select>
+        </div>
+    <div>
+        <label>Product</label>
+        <select id="Product">
+            @foreach (Product product in ViewBag.Products)
+            {
+                @if (Model.CustomerId == product.ProductId)
+                {
+                    <option value="@product.Name" selected>@product.Name</option>
+                }
+                else
+                {
+                    <option value="@product.Name">@product.Name</option>
+                }
+            }
+        </select>
+    </div>
+    <div>
+        <label>Title</label>
+        <select asp-for="Title"></select>
+    </div>
+    <div>
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" />
+    </div>
+    <div>
+        <label asp-for="Technician">Technician</label>
+        <select asp-for="Technician"></select>
+    </div>
+    <div>
+        <label asp-for="DateOpened">Date Opened</label>
+        <input asp-for="DateOpened" />
+    </div>
+    <div>
+        <label asp-for="DateClosed">Date Closed</label>
+        <input asp-for="DateClosed" />
+    </div>
+    <input type="hidden" asp-for="IncidentId" />
+    <div>
+        <button type="submit">@ViewBag.Action</button>
+        <a asp-action="List">Cancel</a>
+    </div>
+</form>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -32,9 +33,9 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         public int CountryId { get; set; }
 
         public Country Country { get; set; }
-
         public string Email { get; set; }
 
         public string Phone { get; set; }
+
     }
 }

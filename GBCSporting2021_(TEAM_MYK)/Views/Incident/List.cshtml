@@ -1,5 +1,33 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Incident>
 @{
+    ViewBag.Title = "Technician Manager - SportsPro";
 }
+
+<a asp-controller="Incident" asp-action="Add">Add Technician</a>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Date Opened</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Incident inci in Model)
+        {
+        <tr>
+            <td>@inci.Title</td>
+            <td>@inci.Customer.Firstname @inci.Customer.Lastname</td>
+            <td>@inci.Product.Name</td>
+            <td>@inci.DateOpened</td>
+            <td>
+                <a asp-controller="Incident" asp-action="Edit" asp-route-id="@inci.IncidentId">Edit</a>
+            </td>
+            <td>
+                <a asp-controller="Incident" asp-action="Delete" asp-route-id="@inci.IncidentId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
