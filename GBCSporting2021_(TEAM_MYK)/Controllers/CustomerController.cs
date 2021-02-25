@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using GBCSporting2021__TEAM_MYK_.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GBCSporting2021__TEAM_MYK_.Controllers
 {
@@ -19,8 +17,8 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult List()
         {
-            var customer = context.Customers
-                .OrderBy(c => c.Firstname); 
+            List<Customer> customer = context.Customers
+                .OrderBy(c => c.Firstname).ToList(); ; 
             return View("List", customer);
         }
         [HttpGet]
@@ -32,6 +30,8 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            List<Country> countries = context.Countries.ToList();
+            ViewBag.CountryList = countries;
             ViewBag.Action = "Edit";
             var customer = context.Customers
                 .FirstOrDefault(c => c.CustomerId == id);
@@ -52,7 +52,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             return View("Delete");
         }
         [HttpPost]
-        public IActionResult Edit(Customer customer)
+        public IActionResult Edit(Customer customer, List<Country> country)
         {
             if (ModelState.IsValid)
             {

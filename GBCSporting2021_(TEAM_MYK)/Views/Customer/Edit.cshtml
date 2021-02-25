@@ -30,6 +30,11 @@
         <input asp-for="Postalcode" />
     </div>
     <div>
+        @if (ViewBag.CountryList == null)
+        {
+            @Html.DropDownListFor(model => model.CountryId, ViewBag.CountryList 
+           as SelectList, "--Select Country--", new { @class="form-control"})
+        }
         <label asp-for="CountryId"></label>
         <select asp-for="CountryId" ></select>
     </div>
