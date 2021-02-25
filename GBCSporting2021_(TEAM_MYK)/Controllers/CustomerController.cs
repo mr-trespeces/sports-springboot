@@ -24,15 +24,16 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.Action = "Edit";
+            ViewBag.Countries = context.Country;
+            ViewBag.Action = "Add";
             return View("Edit", new Customer());
         }
         [HttpGet]
         public IActionResult Edit(int id)
-        {
-            List<Country> countries = context.Countries.ToList();
-            ViewBag.CountryList = countries;
+        { 
+            ViewBag.Countries = context.Country;
             ViewBag.Action = "Edit";
+
             var customer = context.Customers
                 .FirstOrDefault(c => c.CustomerId == id);
             return View(customer);
@@ -52,13 +53,13 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             return View("Delete");
         }
         [HttpPost]
-        public IActionResult Edit(Customer customer, List<Country> country)
+        public IActionResult Edit(Customer customer)
         {
             if (ModelState.IsValid)
             {
                 if (customer.CustomerId == 0)
                 {
-                    context.Customers.Update(customer);
+                    context.Customers.Add(customer);
                 }
                 else
                 {
