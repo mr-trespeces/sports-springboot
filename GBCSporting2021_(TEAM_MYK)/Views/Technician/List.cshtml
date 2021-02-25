@@ -3,13 +3,12 @@
     ViewBag.Title = "Technician Manager - SportsPro";
 }
 
-<a asp-controller="Technician" asp-action="Add">Add Technician</a>
-<table>
+<table class="table">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
         </tr>
     </thead>
     <tbody>
@@ -29,3 +28,4 @@
         }
     </tbody>
 </table>
+<a asp-controller="Technician" asp-action="Add">Add Technician</a>
