@@ -1,0 +1,25 @@
+﻿@model Technician
+@{
+    ViewBag.Title = "Add/Edit Page";
+}
+
+<form asp-controller="Technician" asp-action="Edit" method="post" class="border">
+    <div>
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" />
+    </div>
+    <div>
+        <label asp-for="Phone">Phone</label>
+        <input asp-for="Phone" />
+    </div>
+
+    <input type="hidden" asp-for="TechnicianId" />
+    <div>
+        <button type="submit">@ViewBag.Action</button>
+        <a asp-action="List">Cancel</a>
+    </div>
+</form>
