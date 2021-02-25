@@ -4,7 +4,7 @@
     ViewBag.Title = "Add/Edit Page";
 }
 
-    <form asp-controller="Customer" asp-action="Edit" method="post" class="row g-3 needs-validation" novalidate>
+    <form asp-controller="Customer" asp-action="Edit" method="post">
         <div class="col-md-4">
             <label asp-for="Firstname" class="form-label">First name</label>
             <input asp-for="Firstname" class="form-control" required>
@@ -35,9 +35,7 @@
             <input asp-for="Postalcode" class="form-control" required>
             <span asp-validation-for="Postalcode"></span>
         </div>
-        <div>
-            <label class="form-label">    </label>
-        </div>
+        <br />
         <div class="col-md-12">
             <div class="input-group mb-6">
                 <label class="input-group-text">Choose Country:</label>
@@ -65,7 +63,7 @@
             <label asp-for="Phone" class="form-label">Phone Number</label>
             <input asp-for="Phone" class="form-control">
         </div>
-        <div><label class="form-label">    </label></div>
+        <br />
         <div class="col-md-7">
             <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
         </div>        

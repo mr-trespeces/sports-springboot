@@ -3,29 +3,32 @@
     ViewBag.Title = "Add/Edit Page";
 }
 
-<form asp-controller="Product" asp-action="Edit" method="post" class="border">
-    <div>
-        <label asp-for="Code">Code</label>
-        <input asp-for="Code" />
+<form asp-controller="Product" asp-action="Edit" method="post">
+    <div class="col-md-4">
+        <label asp-for="Code" class="form-label">Code</label>
+        <input asp-for="Code" class="form-control"/>
         <span asp-validation-for="Code"></span>
     </div>
-    <div>
-        <label asp-for="Name">Name</label>
-        <input asp-for="Name" />
+    <div class="col-md-4">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" class="form-control"/>
         <span asp-validation-for="Name"></span>
     </div>
-    <div>
-        <label asp-for="Price">Price</label>
-        <input asp-for="Price" />
-        <span asp-validation-for="Price"></span>
+    <div class="col-md-4">
+        <label asp-for="Name" class="form-label">Price</label>
+        <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <span class="input-group-text">0.00</span>
+            <input asp-for="Price" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+        </div>
     </div>
-    <div>
-        <label asp-for="ReleaseDate">Released Date</label>
-        <input asp-for="ReleaseDate" />
+    <div class="col-md-4">
+        <label asp-for="ReleaseDate" class="form-label">Released Date</label>
+        <input asp-for="ReleaseDate" class="form-control" type="date" value="@DateTime.Today" min="@DateTime.Today">
     </div>
     <input type="hidden" asp-for="ProductId" />
-    <div>
-        <button type="submit">@ViewBag.Action</button>
-        <a asp-action="List">Cancel</a>
+    <br />
+    <div class="col-md-7">
+        <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
     </div>
 </form>
