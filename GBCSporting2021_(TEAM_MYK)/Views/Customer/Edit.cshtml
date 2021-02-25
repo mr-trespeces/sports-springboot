@@ -4,34 +4,59 @@
     ViewBag.Title = "Add/Edit Page";
 }
 
-<form asp-controller="Customer" asp-action="Edit" method="post" class="border">
     <div>
-        <label asp-for="Firstname">Firstname</label>
-        <input asp-for="Firstname" />
+        <label asp-for="Phone">Phone</label>
+        <input asp-for="Phone" />
+        <button type="submit">@ViewBag.Action</button>
+        <a asp-action="List">Cancel</a>
     </div>
-    <div>
-        <label asp-for="Lastname">Lastname</label>
-        <input asp-for="Lastname" />
-    </div>
-    <div>
-        <label asp-for="Address">Address</label>
-        <input asp-for="Address" />
-    </div>
-    <div>
-        <label asp-for="City">City</label>
-        <input asp-for="City" />
-    </div>
-    <div>
-        <label asp-for="State">State</label>
-        <input asp-for="State" />
-    </div>
-    <div>
-        <label asp-for="Postalcode">Postal Code</label>
-        <input asp-for="Postalcode" />
-    </div>
-        <div>
-        <label>Country</label>
-        <select asp-for="CountryId">
+    <form asp-controller="Customer" asp-action="Edit" method="post" class="row g-3 needs-validation" novalidate>
+        <div class="col-md-4">
+            <label asp-for="Firstname" for="validationCustom01" class="form-label">First name</label>
+            <input asp-for="Firstname" type="text" class="form-control" id="validationCustom01" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label asp-for="Lastname" for="validationCustom02" class="form-label">Last name</label>
+            <input asp-for="Lastname" type="text" class="form-control" id="validationCustom02" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Address" for="validationCustom02" class="form-label">Address</label>
+            <input asp-for="Address" type="text" class="form-control" id="validationCustom02" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="City" for="validationCustom03" class="form-label">City</label>
+            <input asp-for="City" type="text" class="form-control" id="validationCustom03" required>
+            <div class="invalid-feedback">
+                Please provide a valid State.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="State" for="validationCustom03" class="form-label">State</label>
+            <input asp-for="State" type="text" class="form-control" id="validationCustom03" required>
+            <div class="invalid-feedback">
+                Please provide a valid State.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Postalcode" for="validationCustom03" class="form-label">Postal Code</label>
+            <input asp-for="Postalcode" type="text" class="form-control" id="validationCustom03" required>
+            <div class="invalid-feedback">
+                Please provide a valid city.
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Choose</label>
+            <select class="form-select" id="inputGroupSelect01">
+
                 @foreach (Country country in ViewBag.Countries)
                 {
                     @if (Model.CountryId == country.CountryId)
@@ -43,19 +68,26 @@
                         <option value="@country.CountryId">@country.Name</option>
                     }
                 }
-            }
-        </select>
-
-    </div>
-    <div>
-        <label asp-for="Email">Email</label>
-        <input asp-for="Email" />
-    </div>
-    <input type="hidden" asp-for="CustomerId" />
-    <div>
-        <label asp-for="Phone">Phone</label>
-        <input asp-for="Phone" />
-        <button type="submit">@ViewBag.Action</button>
-        <a asp-action="List">Cancel</a>
-    </div>
-</form>
+                }
+            </select>
+        </div>
+        <input type="hidden" asp-for="CustomerId" />
+        <div class="col-md-6">
+            <input asp-for="Email" type="text" class="form-control" placeholder="Email">
+            <span class="input-group-text" id="basic-addon2"></span>
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">
+                    You must agree before submitting.
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+    </form>
