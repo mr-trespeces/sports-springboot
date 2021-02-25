@@ -8,41 +8,47 @@
     <div>
         <label asp-for="Firstname">Firstname</label>
         <input asp-for="Firstname" />
+        <span asp-validation-for="Firstname"></span>
     </div>
     <div>
         <label asp-for="Lastname">Lastname</label>
         <input asp-for="Lastname" />
+        <span asp-validation-for="Lastname"></span>
     </div>
     <div>
         <label asp-for="Address">Address</label>
         <input asp-for="Address" />
+        <span asp-validation-for="Address"></span>
     </div>
     <div>
         <label asp-for="City">City</label>
         <input asp-for="City" />
+        <span asp-validation-for="City"></span>
     </div>
     <div>
         <label asp-for="State">State</label>
         <input asp-for="State" />
+        <span asp-validation-for="State"></span>
     </div>
     <div>
         <label asp-for="Postalcode">Postal Code</label>
         <input asp-for="Postalcode" />
+        <span asp-validation-for="Postalcode"></span>
     </div>
-        <div>
+    <div>
         <label>Country</label>
         <select asp-for="CountryId">
-                @foreach (Country country in ViewBag.Countries)
+            @foreach (Country country in ViewBag.Countries)
+            {
+                @if (Model.CountryId == country.CountryId)
                 {
-                    @if (Model.CountryId == country.CountryId)
-                    {
-                        <option value="@country.CountryId" selected>@country.Name.</option>
-                    }
-                    else
-                    {
-                        <option value="@country.CountryId">@country.Name</option>
-                    }
+                    <option value="@country.CountryId" selected>@country.Name.</option>
                 }
+                else
+                {
+                    <option value="@country.CountryId">@country.Name</option>
+                }
+            }
             }
         </select>
 
