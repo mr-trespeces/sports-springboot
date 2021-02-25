@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<Incident>
 @{
-    ViewBag.Title = "Technician Manager - SportsPro";
+    ViewBag.Title = "Incident Manager - SportsPro";
 }
 
-<table class="table">
+<a asp-controller="Incident" asp-action="Add">Add Incident</a>
+<table>
     <thead>
         <tr>
             <th scope="col">Title</th>
