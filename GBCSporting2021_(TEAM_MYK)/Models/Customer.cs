@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,9 +32,11 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         public string Postalcode { get; set; }
 
         [Range(1, 10, ErrorMessage = "Please select a country")]
+        [Required]
+        [ForeignKey("Country")]
+        [DisplayName("Country")]
         public int CountryId { get; set; }
 
-        public Country Country { get; set; }
         public string Email { get; set; }
 
         public string Phone { get; set; }

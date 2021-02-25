@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using GBCSporting2021__TEAM_MYK_.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GBCSporting2021__TEAM_MYK_.Controllers
 {
@@ -19,20 +17,23 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult List()
         {
-            var customer = context.Customers
-                .OrderBy(c => c.Firstname); 
+            List<Customer> customer = context.Customers
+                .OrderBy(c => c.Firstname).ToList(); ; 
             return View("List", customer);
         }
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.Action = "Edit";
+            ViewBag.Countries = context.Country;
+            ViewBag.Action = "Add";
             return View("Edit", new Customer());
         }
         [HttpGet]
         public IActionResult Edit(int id)
-        {
+        { 
+            ViewBag.Countries = context.Country;
             ViewBag.Action = "Edit";
+
             var customer = context.Customers
                 .FirstOrDefault(c => c.CustomerId == id);
             return View(customer);
@@ -58,7 +59,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             {
                 if (customer.CustomerId == 0)
                 {
-                    context.Customers.Update(customer);
+                    context.Customers.Add(customer);
                 }
                 else
                 {

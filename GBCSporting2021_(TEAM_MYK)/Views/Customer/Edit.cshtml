@@ -29,9 +29,23 @@
         <label asp-for="Postalcode">Postal Code</label>
         <input asp-for="Postalcode" />
     </div>
-    <div>
-        <label asp-for="CountryId"></label>
-        <select asp-for="CountryId" ></select>
+        <div>
+        <label>Country</label>
+        <select asp-for="CountryId">
+                @foreach (Country country in ViewBag.Countries)
+                {
+                    @if (Model.CountryId == country.CountryId)
+                    {
+                        <option value="@country.CountryId" selected>@country.Name.</option>
+                    }
+                    else
+                    {
+                        <option value="@country.CountryId">@country.Name</option>
+                    }
+                }
+            }
+        </select>
+
     </div>
     <div>
         <label asp-for="Email">Email</label>
