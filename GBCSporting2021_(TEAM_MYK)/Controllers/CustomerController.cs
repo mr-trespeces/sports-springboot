@@ -4,21 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using GBCSporting2021__TEAM_MYK_.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GBCSporting2021__TEAM_MYK_.Controllers
 {
     public class CustomerController : Controller
     {
         private SportingContext context { get; set; }
-
         public CustomerController(SportingContext ctx)
         {
             context = ctx;
         }
+
         [HttpGet]
         public IActionResult List()
         {
-            var customer = context.Customers;
+            var customer = context.Customers
+                .OrderBy(c => c.Firstname); 
             return View("List", customer);
         }
         [HttpGet]
@@ -52,25 +54,23 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
-            string action = (customer.CustomerId == 4) ? "Edit" : "Edit";
-
             if (ModelState.IsValid)
             {
-                if (action == "Add")
+                if (customer.CustomerId == 0)
                 {
-                    context.Customers.Add(customer);
+                    context.Customers.Update(customer);
                 }
                 else
                 {
                     context.Customers.Update(customer);
                 }
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("List", "Customer");
             }
             else
             {
-                ViewBag.Action = action;
-                return RedirectToAction("Index", "Home");
+                ViewBag.Action = (customer.CustomerId == 0) ? "Add" : "Edit";
+                return View(customer);
             }
         }
         [HttpPost, ActionName("Delete")]
