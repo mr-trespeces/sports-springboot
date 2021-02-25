@@ -69,9 +69,6 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
                 ViewBag.Action = (product.ProductId == 0) ? "Add" : "Edit";
                 return View(product);
             }
-
-
-
         }
         [HttpPost, ActionName("Delete")]
         public IActionResult Delete(int id)

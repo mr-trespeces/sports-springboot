@@ -1,0 +1,11 @@
+﻿@model Technician
+@{
+    ViewBag.Title = "Delete";
+}
+<p>Are you sure you want to delete </p>
+<form asp-action="Delete" method="post" class="border">
+    <div>
+        <button type="submit">Delete</button>
+        <a asp-action="List">No</a>
+    </div>
+</form>
