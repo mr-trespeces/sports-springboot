@@ -1,9 +1,10 @@
 ﻿@model Customer
+
 @{
     ViewBag.Title = "Add/Edit Page";
 }
 
-<form asp-action="Edit" method="post" class="border">
+<form asp-controller="Customer" asp-action="Edit" method="post" class="border">
     <div>
         <label asp-for="Firstname">Firstname</label>
         <input asp-for="Firstname" />
@@ -18,6 +19,7 @@
     </div>
     <div>
         <label asp-for="City">City</label>
+        <input asp-for="City" />
     </div>
     <div>
         <label asp-for="State">State</label>
@@ -28,13 +30,18 @@
         <input asp-for="Postalcode" />
     </div>
     <div>
+        <label asp-for="CountryId"></label>
+        <select asp-for="CountryId" ></select>
+    </div>
+    <div>
         <label asp-for="Email">Email</label>
         <input asp-for="Email" />
     </div>
+    <input type="hidden" asp-for="CustomerId" />
     <div>
         <label asp-for="Phone">Phone</label>
         <input asp-for="Phone" />
-        <button type="submit">Submit</button>
+        <button type="submit">@ViewBag.Action</button>
         <a asp-action="List">Cancel</a>
     </div>
 </form>

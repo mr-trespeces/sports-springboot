@@ -14,8 +14,9 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         }
 
         public DbSet<Product> Products { get; set; }
-       public DbSet<Customer> Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Technician> Technicians { get; set; }
+        public DbSet<Country> Countries { get; set; }
         public DbSet<Incident> Incidents { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -148,7 +149,7 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     City = "Panjakent",
                     State = "Norak",
                     Postalcode = "V9R 3A8",
-                    CountryId = 5,
+                    CountryId = 3,
                     Email = "kent.pedro@georgebrown.ca",
                     Phone = "4161932185"
                 });
