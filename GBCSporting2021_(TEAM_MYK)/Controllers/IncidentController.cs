@@ -1,5 +1,8 @@
 ﻿using GBCSporting2021__TEAM_MYK_.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GBCSporting2021__TEAM_MYK_.Controllers
@@ -15,22 +18,30 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult List()
         {
-            var incident = context.Incidents;
-            return View("List", incident);
+            var inci = context.Incidents
+               .Include(c => c.Customer)
+               .Include(c => c.Product);
+            return View("List", inci);
         }
         [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
+            ViewBag.Customers = context.Customers;
+            ViewBag.Products = context.Products;
+
             return View("Edit", new Incident());
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            var incident = context.Incidents
-                .FirstOrDefault(c => c.IncidentId == id);
-            return View(incident);
+            ViewBag.Customers = context.Customers;
+            ViewBag.Products = context.Products;
+            var inci = context.Incidents
+               .Include(c => c.Product);
+
+            return View(inci);
         }
         [HttpGet]
         public IActionResult Delete(int? id)
