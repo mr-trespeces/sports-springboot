@@ -33,7 +33,6 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         { 
             ViewBag.Countries = context.Country;
             ViewBag.Action = "Edit";
-
             var customer = context.Customers
                 .FirstOrDefault(c => c.CustomerId == id);
             return View(customer);
