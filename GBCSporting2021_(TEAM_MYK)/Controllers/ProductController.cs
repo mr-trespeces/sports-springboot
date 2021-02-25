@@ -39,12 +39,12 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("List", "Product");
             }
             Product prod = context.Products.Find(id);
             if (prod == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("List", "Product");
             }
             return View("Delete");
         }
