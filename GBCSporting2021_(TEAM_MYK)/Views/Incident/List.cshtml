@@ -14,20 +14,5 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (Incident incident in Model)
-        {
-            <tr>
-                <td>@incident.Title</td>
-                <td>@incident.</td>
-                <td>@incident.Phone</td>
-                <td>@incident.Phone</td>
-                <td>
-                    <a asp-controller="Technician" asp-action="Edit" asp-route-id="@tech.TechnicianId">Edit</a>
-                </td>
-                <td>
-                    <a asp-controller="Technician" asp-action="Delete" asp-route-id="@tech.TechnicianId">Delete</a>
-                </td>
-            </tr>
-        }
     </tbody>
 </table>
