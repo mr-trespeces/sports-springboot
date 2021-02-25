@@ -5,49 +5,61 @@
 }
 
 <form asp-controller="Incident" asp-action="Edit" method="post" class="border">
+
     <div>
         <label>Customer</label>
-        <select id="Customer">
+        <select asp-for="CustomerId">
             @foreach (Customer customer in ViewBag.Customers)
             {
                 @if (Model.CustomerId == customer.CustomerId)
                 {
-                    <option value="@customer.Firstname @customer.Lastname" selected>@customer.Firstname @customer.Lastname</option>
+                    <option value="@customer.CustomerId" selected>@customer.Firstname @customer.Lastname</option>
                 }
                 else
                 {
-                    <option value="@customer.Firstname @customer.Lastname">@customer.Firstname @customer.Lastname</option>
+                    <option value="@customer.CustomerId">@customer.Firstname @customer.Lastname</option>
                 }
             }
         </select>
         </div>
     <div>
         <label>Product</label>
-        <select id="Product">
+        <select asp-for="ProductId" >
             @foreach (Product product in ViewBag.Products)
             {
-                @if (Model.CustomerId == product.ProductId)
+                @if (Model.ProductId == product.ProductId)
                 {
-                    <option value="@product.Name" selected>@product.Name</option>
+                    <option  value="@product.ProductId" selected>@product.Name</option>
                 }
                 else
                 {
-                    <option value="@product.Name">@product.Name</option>
+                    <option value="@product.ProductId">@product.Name</option>
                 }
             }
         </select>
     </div>
     <div>
-        <label>Title</label>
-        <select asp-for="Title"></select>
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title"/>
     </div>
     <div>
         <label asp-for="Description">Description</label>
-        <input asp-for="Description" />
+        <textarea asp-for="Description"></textarea>
     </div>
     <div>
-        <label asp-for="Technician">Technician</label>
-        <select asp-for="Technician"></select>
+        <select asp-for="TechnicianId" id="Technician">
+            @foreach (Technician tech in ViewBag.Technicians)
+            {
+                @if (Model.TechnicianId == tech.TechnicianId)
+                {
+                    <option asp-for="@tech.TechnicianId" value="@tech.TechnicianId" selected>@tech.Name</option>
+                }
+                else
+                {
+                    <option asp-for="@tech.TechnicianId" value="@tech.TechnicianId">@tech.Name</option>
+                }
+            }
+        </select>
     </div>
     <div>
         <label asp-for="DateOpened">Date Opened</label>

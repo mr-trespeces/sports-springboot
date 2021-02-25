@@ -29,6 +29,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             ViewBag.Action = "Add";
             ViewBag.Customers = context.Customers;
             ViewBag.Products = context.Products;
+            ViewBag.Technicians = context.Technicians;
 
             return View("Edit", new Incident());
         }
@@ -38,8 +39,9 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             ViewBag.Action = "Edit";
             ViewBag.Customers = context.Customers;
             ViewBag.Products = context.Products;
+            ViewBag.Technicians = context.Technicians;
             var inci = context.Incidents
-               .Include(c => c.Product);
+               .FirstOrDefault(c => c.IncidentId == id);
 
             return View(inci);
         }
@@ -64,7 +66,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             {
                 if (incident.IncidentId == 0)
                 {
-                    context.Incidents.Update(incident);
+                    context.Incidents.Add(incident);
                 }
                 else
                 {
