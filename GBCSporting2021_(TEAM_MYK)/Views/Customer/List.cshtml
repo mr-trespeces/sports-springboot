@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Customer>
 @{
     ViewBag.Title = "Customer Manager - SportsPro";
+    ViewBag.Action = "customer";
 }
 <div class="container pb-10">
     <div class="row align-center justify-content-center text-center py-5">
@@ -28,10 +29,10 @@
                         <td>@customer.Email</td>
                         <td>@customer.City</td>
                         <td>
-                            <a asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustomerId">Edit</a>
+                            <a asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustomerId" asp-route-slug="@customer.Slug">Edit</a>
                         </td>
                         <td>
-                            <a asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustomerId">Delete</a>
+                            <a asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustomerId" asp-route-slug="@customer.Slug">Delete</a>
                         </td>
                     </tr>
                 }

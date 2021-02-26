@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Product>
 @{
     ViewBag.Title = "Product Manager - SportsPro";
+    ViewBag.Action = "product";
 }
 <div class="container pb-10">
     <div class="row align-center justify-content-center text-center py-5">
@@ -30,10 +31,10 @@
                         <td>@product.Price</td>
                         <td>@String.Format("{0:dd/MM/yyyy}", product.ReleaseDate)</td>
                         <td>
-                            <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.ProductId">Edit</a>
+                            <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.ProductId" asp-route-slug="@product.Slug">Edit</a>
                         </td>
                         <td>
-                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.ProductId">Delete</a>
+                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.ProductId" asp-route-slug="@product.Slug">Delete</a>
                         </td>
                     </tr>
                 }

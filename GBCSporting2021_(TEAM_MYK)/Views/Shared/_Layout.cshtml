@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    var action = ViewBag.Action;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,24 +23,25 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" asp-controller="" asp-action="">Home</a>
+                            <a class="nav-link @(action == "home" ? "active" : "")" asp-controller="" asp-action="">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Product" asp-action="List">Products</a>
+                            <a class="nav-link @(action == "product" || action == "home"  ? "active" : "")" asp-controller="Product" asp-action="List">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Technician" asp-action="List">Technician</a>
+                            <a class="nav-link @(action == "technician" || action == "home"? "active" : "")" asp-controller="Technician" asp-action="List">Technician</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Customer" asp-action="List">Customers</a>
+                            <a class="nav-link @(action == "customer" || action == "home"? "active" : "")" asp-controller="Customer" asp-action="List">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Incident" asp-action="List">Incidents</a>
+                            <a class="nav-link @(action == "incident" || action == "home" ? "active" : "")" asp-controller="Incident" asp-action="List">Incidents</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled">Registrations</a>
                         </li>
                         <li class="nav-item">
+
                             <a class="nav-link disabled align-content-md-end" asp-controller="About" asp-action="List">About</a>
                         </li>
                     </ul>

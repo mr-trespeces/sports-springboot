@@ -18,5 +18,6 @@ namespace GBCSporting2021__TEAM_MYK_.Models
 
         [Required(ErrorMessage = "Please enter a valid phone")]
         public string Phone { get; set; }
+        public string Slug => Name?.Replace(' ', '-').ToLower();
     }
 }

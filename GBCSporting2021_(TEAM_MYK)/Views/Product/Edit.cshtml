@@ -13,7 +13,7 @@
         <div class="col-md-4">
             <label asp-for="Code" class="form-label">Code</label>
             <input asp-for="Code" class="form-control" />
-            <span asp-validation-for="Code"></span>
+            <span class="text-danger" asp-validation-for="Code"></span>
         </div>
         <div class="col-md-4">
             <label asp-for="Name" class="form-label">Name</label>
@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-4">
             <label asp-for="ReleaseDate" class="form-label">Released Date</label>
-            <input asp-for="ReleaseDate" class="form-control" type="date" min="@DateTime.Today" required>
+            <input asp-for="ReleaseDate" class="form-control" type="date" value="@String.Format("{0:yyyy-MM-dd}", Model.ReleaseDate)">
         </div>
         <input type="hidden" asp-for="ProductId" />
         <br />
