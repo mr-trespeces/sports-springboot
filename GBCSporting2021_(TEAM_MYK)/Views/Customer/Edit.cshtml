@@ -10,8 +10,9 @@
             <p class="lead font-weight-lighter text-muted">Update all the data while you can.</p>
         </div>
     </div>
+
     <form asp-controller="Customer" asp-action="Edit" method="post">
-        <div class="col-md-4">
+        <div class="input-group mb-3">
             <label asp-for="Firstname" class="form-label">First name</label>
             <input asp-for="Firstname" class="form-control" required>
             <span asp-validation-for="Firstname"></span>
