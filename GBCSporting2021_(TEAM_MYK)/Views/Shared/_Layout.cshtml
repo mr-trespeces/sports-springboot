@@ -42,7 +42,7 @@
                         </li>
                         <li class="nav-item">
 
-                            <a class="nav-link disabled align-content-md-end" asp-controller="About" asp-action="List">About</a>
+                            <a class="nav-link @(action == "about" || action == "home" ? "active" : "")" asp-controller="About" asp-action="Index">About</a>
                         </li>
                     </ul>
                 </div>
