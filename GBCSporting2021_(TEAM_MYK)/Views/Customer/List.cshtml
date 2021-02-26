@@ -29,10 +29,10 @@
                         <td>@customer.Email</td>
                         <td>@customer.City</td>
                         <td>
-                            <a asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustomerId" asp-route-slug="@customer.Slug">Edit</a>
+                            <a class="btn btn-success" asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustomerId" asp-route-slug="@customer.Slug">Edit</a>
                         </td>
                         <td>
-                            <a asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustomerId" asp-route-slug="@customer.Slug">Delete</a>
+                            <a class="btn btn-danger" asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustomerId" asp-route-slug="@customer.Slug">Delete</a>
                         </td>
                     </tr>
                 }

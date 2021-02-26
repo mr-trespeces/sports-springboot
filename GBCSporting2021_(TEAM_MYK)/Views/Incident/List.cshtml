@@ -30,10 +30,10 @@
                     <td>@inci.Product.Name</td>
                     <td>@Html.DisplayFor(modelItem => inci.DateOpened)</td>
                     <td>
-                        <a asp-controller="Incident" asp-action="Edit" asp-route-id="@inci.IncidentId" asp-route-slug="@inci.Slug">Edit</a>
+                        <a class="btn btn-success" asp-controller="Incident" asp-action="Edit" asp-route-id="@inci.IncidentId" asp-route-slug="@inci.Slug">Edit</a>
                     </td>
                     <td>
-                        <a asp-controller="Incident" asp-action="Delete" asp-route-id="@inci.IncidentId" asp-route-slug="@inci.Slug">Delete</a>
+                        <a class="btn btn-danger" asp-controller="Incident" asp-action="Delete" asp-route-id="@inci.IncidentId" asp-route-slug="@inci.Slug">Delete</a>
                     </td>
                 </tr>
             }

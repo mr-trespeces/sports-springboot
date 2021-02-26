@@ -31,10 +31,10 @@
                         <td>@product.Price</td>
                         <td>@String.Format("{0:yyyy/MM/dd}", product.ReleaseDate)</td>
                         <td>
-                            <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.ProductId" asp-route-slug="@product.Slug">Edit</a>
+                            <a class="btn btn-success" asp-controller="Product" asp-action="Edit" asp-route-id="@product.ProductId" asp-route-slug="@product.Slug">Edit</a>
                         </td>
                         <td>
-                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.ProductId" asp-route-slug="@product.Slug">Delete</a>
+                            <a class="btn btn-danger" asp-controller="Product" asp-action="Delete" asp-route-id="@product.ProductId" asp-route-slug="@product.Slug">Delete</a>
                         </td>
                     </tr>
                 }

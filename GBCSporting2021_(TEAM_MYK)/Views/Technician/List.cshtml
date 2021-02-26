@@ -28,10 +28,10 @@
                     <td>@tech.Email</td>
                     <td>@tech.Phone</td>
                     <td>
-                        <a asp-controller="Technician" asp-action="Edit" asp-route-id="@tech.TechnicianId" asp-route-slug="@tech.Slug">Edit</a>
+                        <a class="btn btn-success" asp-controller="Technician" asp-action="Edit" asp-route-id="@tech.TechnicianId" asp-route-slug="@tech.Slug">Edit</a>
                     </td>
                     <td>
-                        <a asp-controller="Technician" asp-action="Delete" asp-route-id="@tech.TechnicianId" asp-route-slug="@tech.Slug">Delete</a>
+                        <a class="btn btn-danger" asp-controller="Technician" asp-action="Delete" asp-route-id="@tech.TechnicianId" asp-route-slug="@tech.Slug">Delete</a>
                     </td>
                 </tr>
             }

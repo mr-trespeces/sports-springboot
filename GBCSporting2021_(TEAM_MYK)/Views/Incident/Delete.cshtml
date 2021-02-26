@@ -9,7 +9,7 @@
             <p class="lead font-weight-lighter text-muted">Are you sure you want to delete "@ViewBag.Incident.Title"</p>
             <form asp-action="Delete" method="post">
                 <div>
-                    <button class="btn btn-primary" type="submit">@ViewBag.Title</button>
+                    <button class="btn btn-danger" type="submit">@ViewBag.Title</button>
                     <a asp-controller="Incident" asp-action="List" class="btn btn-primary">No</a>
                 </div>
             </form>
