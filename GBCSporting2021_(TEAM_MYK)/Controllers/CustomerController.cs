@@ -32,8 +32,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         { 
-            ViewBag.Countries = context.Country
-                .FirstOrDefault(c => c.CountryId == id);
+            ViewBag.Countries = context.Country;
             ViewBag.Action = "Edit";
             var customer = context.Customers
                 .FirstOrDefault(c => c.CustomerId == id);
