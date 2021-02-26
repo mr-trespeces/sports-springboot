@@ -2,8 +2,8 @@
 @{
     ViewBag.Title = "Incident Manager - SportsPro";
 }
- 
-<table>
+
+<table class="table">
     <thead>
         <tr>
             <th scope="col">Title</th>
@@ -15,18 +15,18 @@
     <tbody>
         @foreach (Incident inci in Model)
         {
-        <tr>
-            <td>@inci.Title</td>
-            <td>@inci.Customer.Firstname @inci.Customer.Lastname</td>
-            <td>@inci.Product.Name</td>
-            <td>@Html.DisplayFor(modelItem => inci.DateOpened)</td>
-            <td>
-                <a asp-controller="Incident" asp-action="Edit" asp-route-id="@inci.IncidentId">Edit</a>
-            </td>
-            <td>
-                <a asp-controller="Incident" asp-action="Delete" asp-route-id="@inci.IncidentId">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>@inci.Title</td>
+                <td>@inci.Customer.Firstname @inci.Customer.Lastname</td>
+                <td>@inci.Product.Name</td>
+                <td>@Html.DisplayFor(modelItem => inci.DateOpened)</td>
+                <td>
+                    <a asp-controller="Incident" asp-action="Edit" asp-route-id="@inci.IncidentId">Edit</a>
+                </td>
+                <td>
+                    <a asp-controller="Incident" asp-action="Delete" asp-route-id="@inci.IncidentId">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
