@@ -26,8 +26,8 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         public string Postalcode { get; set; }
         [Range(1, 10, ErrorMessage = "*Please select a country")]
         public int CountryId { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
         public string Slug => Firstname?.Replace(' ', '-').ToLower()
             + '-' + Lastname?.Replace(' ', '-').ToLower();
     }

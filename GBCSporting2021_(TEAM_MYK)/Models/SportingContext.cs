@@ -25,23 +25,23 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                 {
                     ProductId = 1,
                     Code = "QWE123",
-                    Name = "TV",
-                    Price = "$999.99",
+                    Name = "Bat",
+                    Price = "10.99",
                     ReleaseDate = DateTime.Now
                 },
                 new Product
                 {
                     ProductId = 2,
                     Code = "ASD456",
-                    Name = "Sofa",
-                    Price = "$555.55",
+                    Name = "Net",
+                    Price = "15.55",
                     ReleaseDate = DateTime.Now,
                 },
                 new Product
                 {
                     ProductId = 3,
                     Code = "ZXC789",
-                    Name = "Laptop",
+                    Name = "Ball",
                     Price = "$2.00",
                     ReleaseDate = DateTime.Now
                 });
@@ -50,22 +50,22 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                 new Technician
                 {
                     TechnicianId = 1,
-                    Name = "Technician1",
-                    Email = "tech1@georgebrown.ca",
-                    Phone = "4168540113"
+                    Name = "Gowther Kangman",
+                    Email = "gowther@georgebrown.ca",
+                    Phone = "416-854-0113"
                 },
                 new Technician
                 {
                     TechnicianId = 2,
-                    Name = "Technician2",
-                    Email = "tech2@gerogebrown.ca",
+                    Name = "Tiny Tony",
+                    Email = "tiny.tony@gmail.com",
                     Phone = "4167542904"
                 },
                 new Technician
                 {
                     TechnicianId = 3,
-                    Name = "Technician3",
-                    Email = "tech3@georgebrown.ca",
+                    Name = "Duc Mihn",
+                    Email = "duc.mihn@yahoo.com",
                     Phone = "4167125209"
                 });
 
@@ -74,9 +74,9 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                 {
                     IncidentId = 1,
                     CustomerId = 1,
-                    ProductId = 1,
-                    Title = "Could not fix",
-                    Description = "Hello :)",
+                    ProductId = 3,
+                    Title = "Explosion",
+                    Description = "The ball exploded.",
                     TechnicianId = 1,
                     DateOpened = DateTime.Now,
                     DateClosed = DateTime.Now
@@ -85,9 +85,9 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                 {
                     IncidentId = 2,
                     CustomerId = 2,
-                    ProductId = 2,
-                    Title = "Could not open",
-                    Description = "Hi :(",
+                    ProductId = 1,
+                    Title = "Broken Leg",
+                    Description = "Broken leg because of the bat.",
                     TechnicianId = 2,
                     DateOpened = DateTime.Now,
                     DateClosed = DateTime.Now
@@ -97,8 +97,8 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     IncidentId = 3,
                     CustomerId = 3,
                     ProductId = 3,
-                    Title = "Could not turn on",
-                    Description = "Yes",
+                    Title = "Ripped Net",
+                    Description = "The net ripped.",
                     TechnicianId = 3,
                     DateOpened = DateTime.Now,
                     DateClosed = DateTime.Now

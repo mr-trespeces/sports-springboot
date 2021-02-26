@@ -70,7 +70,7 @@
         </div>
         <div class="col-md-4">
             <label asp-for="DateClosed" class="form-label">Date Closed</label>
-            <input asp-for="DateClosed" class="form-control" type="date" value="@String.Format("{0:yyyy-MM-dd}", Model.DateClosed)">
+            <input asp-for="DateClosed" class="form-control" type="date" value="@(ViewBag.Action == "Edit" ? @String.Format("{0:yyyy-MM-dd}", Model.DateOpened) : @String.Format("{0:yyyy-MM-dd}", DateTime.Now))">
         </div>
         <input type="hidden" asp-for="IncidentId" />
         <br />

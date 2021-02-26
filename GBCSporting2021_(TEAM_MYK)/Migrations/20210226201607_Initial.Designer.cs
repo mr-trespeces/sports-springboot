@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBCSporting2021__TEAM_MYK_.Migrations
 {
     [DbContext(typeof(SportingContext))]
-    [Migration("20210226001246_Updated_MG")]
-    partial class Updated_MG
+    [Migration("20210226201607_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -159,7 +159,7 @@ namespace GBCSporting2021__TEAM_MYK_.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DateClosed")
+                    b.Property<DateTime>("DateClosed")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DateOpened")
@@ -172,7 +172,7 @@ namespace GBCSporting2021__TEAM_MYK_.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TechnicianId")
+                    b.Property<int?>("TechnicianId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -185,8 +185,6 @@ namespace GBCSporting2021__TEAM_MYK_.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("TechnicianId");
-
                     b.ToTable("Incidents");
 
                     b.HasData(
@@ -194,34 +192,34 @@ namespace GBCSporting2021__TEAM_MYK_.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateClosed = new DateTime(2021, 2, 25, 19, 12, 45, 512, DateTimeKind.Local).AddTicks(968),
-                            DateOpened = new DateTime(2021, 2, 25, 19, 12, 45, 512, DateTimeKind.Local).AddTicks(623),
-                            Description = "Hello :)",
-                            ProductId = 1,
+                            DateClosed = new DateTime(2021, 2, 26, 15, 16, 7, 606, DateTimeKind.Local).AddTicks(462),
+                            DateOpened = new DateTime(2021, 2, 26, 15, 16, 7, 606, DateTimeKind.Local).AddTicks(127),
+                            Description = "The ball exploded.",
+                            ProductId = 3,
                             TechnicianId = 1,
-                            Title = "Could not fix"
+                            Title = "Explosion"
                         },
                         new
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateClosed = new DateTime(2021, 2, 25, 19, 12, 45, 512, DateTimeKind.Local).AddTicks(1320),
-                            DateOpened = new DateTime(2021, 2, 25, 19, 12, 45, 512, DateTimeKind.Local).AddTicks(1307),
-                            Description = "Hi :(",
-                            ProductId = 2,
+                            DateClosed = new DateTime(2021, 2, 26, 15, 16, 7, 606, DateTimeKind.Local).AddTicks(793),
+                            DateOpened = new DateTime(2021, 2, 26, 15, 16, 7, 606, DateTimeKind.Local).AddTicks(781),
+                            Description = "Broken leg because of the bat.",
+                            ProductId = 1,
                             TechnicianId = 2,
-                            Title = "Could not open"
+                            Title = "Broken Leg"
                         },
                         new
                         {
                             IncidentId = 3,
                             CustomerId = 3,
-                            DateClosed = new DateTime(2021, 2, 25, 19, 12, 45, 512, DateTimeKind.Local).AddTicks(1331),
-                            DateOpened = new DateTime(2021, 2, 25, 19, 12, 45, 512, DateTimeKind.Local).AddTicks(1328),
-                            Description = "Yes",
+                            DateClosed = new DateTime(2021, 2, 26, 15, 16, 7, 606, DateTimeKind.Local).AddTicks(810),
+                            DateOpened = new DateTime(2021, 2, 26, 15, 16, 7, 606, DateTimeKind.Local).AddTicks(807),
+                            Description = "The net ripped.",
                             ProductId = 3,
                             TechnicianId = 3,
-                            Title = "Could not turn on"
+                            Title = "Ripped Net"
                         });
                 });
 
@@ -256,25 +254,25 @@ namespace GBCSporting2021__TEAM_MYK_.Migrations
                         {
                             ProductId = 1,
                             Code = "QWE123",
-                            Name = "TV",
-                            Price = "$999.99",
-                            ReleaseDate = new DateTime(2021, 2, 25, 19, 12, 45, 507, DateTimeKind.Local).AddTicks(5152)
+                            Name = "Bat",
+                            Price = "10.99",
+                            ReleaseDate = new DateTime(2021, 2, 26, 15, 16, 7, 601, DateTimeKind.Local).AddTicks(5614)
                         },
                         new
                         {
                             ProductId = 2,
                             Code = "ASD456",
-                            Name = "Sofa",
-                            Price = "$555.55",
-                            ReleaseDate = new DateTime(2021, 2, 25, 19, 12, 45, 510, DateTimeKind.Local).AddTicks(9441)
+                            Name = "Net",
+                            Price = "15.55",
+                            ReleaseDate = new DateTime(2021, 2, 26, 15, 16, 7, 604, DateTimeKind.Local).AddTicks(8303)
                         },
                         new
                         {
                             ProductId = 3,
                             Code = "ZXC789",
-                            Name = "Laptop",
+                            Name = "Ball",
                             Price = "$2.00",
-                            ReleaseDate = new DateTime(2021, 2, 25, 19, 12, 45, 510, DateTimeKind.Local).AddTicks(9467)
+                            ReleaseDate = new DateTime(2021, 2, 26, 15, 16, 7, 604, DateTimeKind.Local).AddTicks(8329)
                         });
                 });
 
@@ -305,22 +303,22 @@ namespace GBCSporting2021__TEAM_MYK_.Migrations
                         new
                         {
                             TechnicianId = 1,
-                            Email = "tech1@georgebrown.ca",
-                            Name = "Technician1",
-                            Phone = "4168540113"
+                            Email = "gowther@georgebrown.ca",
+                            Name = "Gowther Kangman",
+                            Phone = "416-854-0113"
                         },
                         new
                         {
                             TechnicianId = 2,
-                            Email = "tech2@gerogebrown.ca",
-                            Name = "Technician2",
+                            Email = "tiny.tony@gmail.com",
+                            Name = "Tiny Tony",
                             Phone = "4167542904"
                         },
                         new
                         {
                             TechnicianId = 3,
-                            Email = "tech3@georgebrown.ca",
-                            Name = "Technician3",
+                            Email = "duc.mihn@yahoo.com",
+                            Name = "Duc Mihn",
                             Phone = "4167125209"
                         });
                 });
@@ -339,17 +337,9 @@ namespace GBCSporting2021__TEAM_MYK_.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GBCSporting2021__TEAM_MYK_.Models.Technician", "Technician")
-                        .WithMany()
-                        .HasForeignKey("TechnicianId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Customer");
 
                     b.Navigation("Product");
-
-                    b.Navigation("Technician");
                 });
 #pragma warning restore 612, 618
         }
