@@ -16,9 +16,9 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         [Required(ErrorMessage = "No product Id found")]
         public Product Product { get; set; }
         public int ProductId { get; set; }
-        [Required(ErrorMessage = "Please enter a valid title")]
+        [Required(ErrorMessage = "*Please enter a valid title")]
         public string Title { get; set; }
-        [Required(ErrorMessage = "Please enter a valid description")]
+        [Required(ErrorMessage = "*Please enter a valid description")]
         public string Description { get; set; }
         public int TechnicianId { get; set; }
         [Required(ErrorMessage = "No Technician Id found")]
