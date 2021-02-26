@@ -17,6 +17,7 @@
         <p><span class="text-danger" asp-validation-for="City"></span></p>
         <p><span class="text-danger" asp-validation-for="State"></span></p>
         <p><span class="text-danger" asp-validation-for="Postalcode"></span></p>
+        <span class="text-danger" asp-validation-for="CountryId"></span>
         <div class="col-md-4">
             <label asp-for="Firstname" class="form-label">First name</label>
             <input asp-for="Firstname" class="form-control">
@@ -46,7 +47,7 @@
             <div class="input-group mb-6">
                 <label class="input-group-text">Choose Country:</label>
                 <select asp-for="CountryId" class="form-select">
-                    <option value="">Select Country</option>
+                    <option value="0">Select Country</option>
                     @foreach (Country country in ViewBag.Countries)
                     {
                         @if (Model.CountryId == country.CountryId)
@@ -59,7 +60,6 @@
                         }
                     }
                 </select>
-                <span class="text-danger" asp-validation-for="CountryId"></span>
             </div>
         </div>
         <input type="hidden" asp-for="CustomerId" />

@@ -11,12 +11,16 @@
         </div>
     </div>
     <form asp-controller="Incident" asp-action="Edit" method="post">
+        <p><span class="text-danger" asp-validation-for="CustomerId"></span></p>
         <p><span class="text-danger" asp-validation-for="Title"></span></p>
         <p><span class="text-danger" asp-validation-for="Description"></span></p>
+        <p><span class="text-danger" asp-validation-for="ProductId"></span></p>
+        <p><span class="text-danger" asp-validation-for="TechnicianId"></span></p>
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Customer:</label>
                 <select asp-for="CustomerId" class="form-select">
+                    <option value="0">---Select Customer---</option>
                     @foreach (Customer customer in ViewBag.Customers)
                     {
                         @if (Model.CustomerId == customer.CustomerId)
@@ -29,7 +33,6 @@
                         }
                     }
                 </select>
-                <span class="text-danger" asp-validation-for="CustomerId"></span>
             </div>
         </div>
         <br />
@@ -37,6 +40,7 @@
             <div class="input-group mb-6">
                 <label class="input-group-text">Product:   </label>
                 <select asp-for="ProductId" class="form-select">
+                    <option value="0">---Select Product---</option>
                     @foreach (Product product in ViewBag.Products)
                     {
                         @if (Model.ProductId == product.ProductId)
@@ -49,7 +53,6 @@
                         }
                     }
                 </select>
-                <span class="text-danger" asp-validation-for="ProductId"></span>
             </div>
         </div>
         <div class="col-md-4">
@@ -68,6 +71,7 @@
             <div class="input-group mb-6">
                 <label class="input-group-text">Technician:</label>
                 <select asp-for="TechnicianId" class="form-select">
+                    <option value="0">---Select Select Technician---</option>
                     @foreach (Technician tech in ViewBag.Technicians)
                     {
                         @if (Model.TechnicianId == tech.TechnicianId)
@@ -80,7 +84,6 @@
                         }
                     }
                 </select>
-                <span class="text-danger" asp-validation-for="TechnicianId"></span>
             </div>
         </div>
         <div class="col-md-4">
