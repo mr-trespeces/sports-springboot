@@ -10,15 +10,16 @@
         </div>
     </div>
     <form asp-controller="Product" asp-action="Edit" method="post">
+        <p><span class="text-danger" asp-validation-for="Code"></span></p>
+        <p><span class="text-danger" asp-validation-for="Name"></span></p>
+        <p><span class="text-danger" asp-validation-for="Price"></span></p>
         <div class="col-md-4">
             <label asp-for="Code" class="form-label">Code</label>
             <input asp-for="Code" class="form-control" />
-            <span class="text-danger" asp-validation-for="Code"></span>
         </div>
         <div class="col-md-4">
             <label asp-for="Name" class="form-label">Name</label>
             <input asp-for="Name" class="form-control" />
-            <span class="text-danger" asp-validation-for="Name"></span>
         </div>
         <div class="col-md-4">
             <label asp-for="Name" class="form-label">Price</label>
@@ -30,7 +31,7 @@
         </div>
         <div class="col-md-4">
             <label asp-for="ReleaseDate" class="form-label">Released Date</label>
-            <input asp-for="ReleaseDate" class="form-control" type="date" value="@String.Format("{0:yyyy-MM-dd}", Model.ReleaseDate)">
+            <input asp-for="ReleaseDate" class="form-control" type="date" value="@(ViewBag.Action == "Edit" ? @String.Format("{0:yyyy-MM-dd}", Model.ReleaseDate) : @String.Format("{0:yyyy-MM-dd}", DateTime.Now))">
         </div>
         <input type="hidden" asp-for="ProductId" />
         <br />
