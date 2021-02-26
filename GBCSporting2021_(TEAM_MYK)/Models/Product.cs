@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace GBCSporting2021__TEAM_MYK_.Models
 {
@@ -19,6 +17,7 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         [Required(ErrorMessage = "Please enter a valid price")]
         public string Price { get; set; }
 
-        public string ReleaseDate { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode =true, DataFormatString ="{0:MM/dd/yyyy}")]
+        public DateTime? ReleaseDate { get; set; }
     }
 }

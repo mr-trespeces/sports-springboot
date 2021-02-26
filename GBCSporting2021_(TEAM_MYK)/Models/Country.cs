@@ -9,9 +9,6 @@ namespace GBCSporting2021__TEAM_MYK_.Models
 {
     public class Country 
     {
-
-
-        [Required]
         public int CountryId { get; set; }
         public string Name { get; set; }
 
