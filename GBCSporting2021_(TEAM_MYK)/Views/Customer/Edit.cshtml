@@ -3,7 +3,13 @@
 @{
     ViewBag.Title = "Add/Edit Page";
 }
-
+<div class="container pb-10">
+    <div class="row align-center justify-content-center text-center py-5">
+        <div class="col col-12 col-md-8">
+            <h2 class="text-dark">Updating data?</h2>
+            <p class="lead font-weight-lighter text-muted">Update all the data while you can.</p>
+        </div>
+    </div>
     <form asp-controller="Customer" asp-action="Edit" method="post">
         <div class="col-md-4">
             <label asp-for="Firstname" class="form-label">First name</label>
@@ -23,7 +29,7 @@
         <div class="col-md-6">
             <label asp-for="City" class="form-label">City</label>
             <input asp-for="City" class="form-control" required>
-        <span asp-validation-for="City"></span>
+            <span asp-validation-for="City"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="State" class="form-label">State</label>
@@ -66,5 +72,6 @@
         <br />
         <div class="col-md-7">
             <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
-        </div>        
+        </div>
     </form>
+</div>
