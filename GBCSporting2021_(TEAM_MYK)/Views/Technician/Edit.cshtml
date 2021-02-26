@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Add/Edit Page of Technician";
 }
+
 <div class="container pb-10">
     <div class="row align-center justify-content-center text-center py-5">
         <div class="col col-12 col-md-8">
@@ -10,10 +11,10 @@
         </div>
     </div>
     <form asp-controller="Technician" asp-action="Edit" method="post">
+        <p><span class="text-danger" asp-validation-for="Name"></span></p>
         <div class="col-md-4">
             <label asp-for="Name" class="form-label">Name</label>
             <input asp-for="Name" class="form-control" />
-            <span class="text-danger" asp-validation-for="Name"></span>
         </div>
         <div class="col-md-7">
             <label asp-for="Email" class="form-label">Email</label>

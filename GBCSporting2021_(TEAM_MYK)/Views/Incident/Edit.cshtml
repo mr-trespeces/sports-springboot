@@ -10,6 +10,8 @@
         </div>
     </div>
     <form asp-controller="Incident" asp-action="Edit" method="post">
+        <p><span class="text-danger" asp-validation-for="Title"></span></p>
+        <p><span class="text-danger" asp-validation-for="Description"></span></p>
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Customer:</label>
@@ -40,14 +42,12 @@
         <div class="col-md-4">
             <label asp-for="Title" class="form-label">Title</label>
             <input asp-for="Title" class="form-control">
-            <span class="text-danger" asp-validation-for="Title"></span>
         </div>
         <br />
         <div class="col-md-4">
             <div class="input-group">
                 <span class="input-group-text">Description:</span>
                 <textarea asp-for="Description" class="form-control" aria-label="With textarea"></textarea>
-                <span class="text-danger" asp-validation-for="Description"></span>
             </div>
         </div>
         <br />
