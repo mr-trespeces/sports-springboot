@@ -35,6 +35,8 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Delete(int? id)
         {
+            ViewBag.Tech = context.Technicians
+                .FirstOrDefault(c => c.TechnicianId == id);
             if (id == null)
             {
                 return RedirectToAction("List", "Technician");

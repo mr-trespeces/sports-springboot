@@ -2,34 +2,41 @@
 @{
     ViewBag.Title = "Technician Manager - SportsPro";
 }
-
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Technician tech in Model)
-        {
+<div class="container pb-10">
+    <div class="row align-center justify-content-center text-center py-5">
+        <div class="col col-12 col-md-8">
+            <h2 class="text-dark">@ViewBag.Title</h2>
+            <p class="lead font-weight-lighter text-muted">Technician I will manange you now!</p>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
             <tr>
-                <td>@tech.Name</td>
-                <td>@tech.Email</td>
-                <td>@tech.Phone</td>
-                <td>
-                    <a asp-controller="Technician" asp-action="Edit" asp-route-id="@tech.TechnicianId">Edit</a>
-                </td>
-                <td>
-                    <a asp-controller="Technician" asp-action="Delete" asp-route-id="@tech.TechnicianId">Delete</a>
-                </td>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
             </tr>
-        }
-    </tbody>
-</table>
-<div class="d-grid gap-2 d-md-block">
-    <a asp-controller="Technician" asp-action="Add">
-        <button class="btn btn-primary" type="button">Add Technician</button>
-    </a>
+        </thead>
+        <tbody>
+            @foreach (Technician tech in Model)
+            {
+                <tr>
+                    <td>@tech.Name</td>
+                    <td>@tech.Email</td>
+                    <td>@tech.Phone</td>
+                    <td>
+                        <a asp-controller="Technician" asp-action="Edit" asp-route-id="@tech.TechnicianId">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Technician" asp-action="Delete" asp-route-id="@tech.TechnicianId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="d-grid gap-2 d-md-block">
+        <a asp-controller="Technician" asp-action="Add">
+            <button class="btn btn-primary" type="button">Add Technician</button>
+        </a>
+    </div>
 </div>

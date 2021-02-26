@@ -1,34 +1,42 @@
 ﻿@model Product
 @{
-    ViewBag.Title = "Add/Edit Page";
+    ViewBag.Title = "Add/Edit Page of Products";
 }
-
-<form asp-controller="Product" asp-action="Edit" method="post">
-    <div class="col-md-4">
-        <label asp-for="Code" class="form-label">Code</label>
-        <input asp-for="Code" class="form-control"/>
-        <span asp-validation-for="Code"></span>
-    </div>
-    <div class="col-md-4">
-        <label asp-for="Name" class="form-label">Name</label>
-        <input asp-for="Name" class="form-control"/>
-        <span asp-validation-for="Name"></span>
-    </div>
-    <div class="col-md-4">
-        <label asp-for="Name" class="form-label">Price</label>
-        <div class="input-group mb-3">
-            <span class="input-group-text">$</span>
-            <span class="input-group-text">0.00</span>
-            <input asp-for="Price" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+<div class="container pb-10">
+    <div class="row align-center justify-content-center text-center py-5">
+        <div class="col col-12 col-md-8">
+            <h2 class="text-dark">@ViewBag.Title</h2>
+            <p class="lead font-weight-lighter text-muted">Managing product is tiring!</p>
         </div>
     </div>
-    <div class="col-md-4">
-        <label asp-for="ReleaseDate" class="form-label">Released Date</label>
-        <input asp-for="ReleaseDate" class="form-control" type="date" min="@DateTime.Today" required>
-    </div>
-    <input type="hidden" asp-for="ProductId" />
-    <br />
-    <div class="col-md-7">
-        <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
-    </div>
-</form> 
+    <form asp-controller="Product" asp-action="Edit" method="post">
+        <div class="col-md-4">
+            <label asp-for="Code" class="form-label">Code</label>
+            <input asp-for="Code" class="form-control" />
+            <span asp-validation-for="Code"></span>
+        </div>
+        <div class="col-md-4">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="col-md-4">
+            <label asp-for="Name" class="form-label">Price</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text">0.00</span>
+                <input asp-for="Price" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label asp-for="ReleaseDate" class="form-label">Released Date</label>
+            <input asp-for="ReleaseDate" class="form-control" type="date" min="@DateTime.Today" required>
+        </div>
+        <input type="hidden" asp-for="ProductId" />
+        <br />
+        <div class="col-md-7">
+            <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
+            <a asp-controller="Product" asp-action="List" class="btn btn-primary">No</a>
+        </div>
+    </form>
+</div>

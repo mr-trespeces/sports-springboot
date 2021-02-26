@@ -48,6 +48,8 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Delete(int? id)
         {
+            ViewBag.Incident = context.Incidents
+                .FirstOrDefault(c => c.IncidentId == id);
             if (id == null)
             {
                 return RedirectToAction("List", "Incident");

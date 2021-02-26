@@ -1,16 +1,16 @@
 ﻿@model Customer
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Customer";
 }
 <div class="container pb-10">
     <div class="row align-center justify-content-center text-center py-5">
         <div class="col col-12 col-md-8">
-            <h2 class="text-dark">Deleting Customer</h2>
-            <p class="lead font-weight-lighter text-muted">Are you sure you want to delete @ViewBag.Customer</p>    
-            <form asp-action="Delete" method="post" class="border">
+            <h2 class="text-dark">@ViewBag.Title</h2>
+            <p class="lead font-weight-lighter text-muted">Are you sure you want to delete "@ViewBag.Customer.Firstname @ViewBag.Customer.Lastname"</p>    
+            <form asp-action="Delete" method="post">
                 <div>
-                    <button type="submit">Delete</button>
-                    <a asp-action="List">No</a>
+                    <button class="btn btn-primary" type="submit">@ViewBag.Title</button>
+                    <a asp-controller="Customer" asp-action="List" class="btn btn-primary">No</a>
                 </div>
             </form>
         </div>
