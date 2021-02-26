@@ -27,7 +27,7 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     Code = "QWE123",
                     Name = "TV",
                     Price = "$999.99",
-                    ReleaseDate = "12-12-2020"
+                    ReleaseDate = DateTime.Now
                 },
                 new Product
                 {
@@ -35,7 +35,7 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     Code = "ASD456",
                     Name = "Sofa",
                     Price = "$555.55",
-                    ReleaseDate = "11-13-2012"
+                    ReleaseDate = DateTime.Now,
                 },
                 new Product
                 {
@@ -43,7 +43,7 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     Code = "ZXC789",
                     Name = "Laptop",
                     Price = "$2.00",
-                    ReleaseDate = "2-23-2018"
+                    ReleaseDate = DateTime.Now
                 });
 
             modelBuilder.Entity<Technician>().HasData(
@@ -78,8 +78,8 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     Title = "Could not fix",
                     Description = "Hello :)",
                     TechnicianId = 1,
-                    DateOpened = "9-2-2012",
-                    DateClosed = "1-14-2013"
+                    DateOpened = DateTime.Now,
+                    DateClosed = DateTime.Now
                 },
                 new Incident
                 {
@@ -89,8 +89,8 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     Title = "Could not open",
                     Description = "Hi :(",
                     TechnicianId = 2,
-                    DateOpened = "5-21-1992",
-                    DateClosed = "8-19-2012"
+                    DateOpened = DateTime.Now,
+                    DateClosed = DateTime.Now
                 },
                 new Incident
                 {
@@ -98,10 +98,10 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     CustomerId = 3,
                     ProductId = 3,
                     Title = "Could not turn on",
-                    Description = "Yes ./.",
+                    Description = "Yes",
                     TechnicianId = 3,
-                    DateOpened = "12-3-2017",
-                    DateClosed = "3-18-2019"
+                    DateOpened = DateTime.Now,
+                    DateClosed = DateTime.Now
                 });
 
 

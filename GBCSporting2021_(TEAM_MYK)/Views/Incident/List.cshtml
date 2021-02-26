@@ -2,37 +2,36 @@
 @{
     ViewBag.Title = "Incident Manager - SportsPro";
 }
-<div class="input-group mb-3">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Customer</th>
-                <th scope="col">Product</th>
-                <th scope="col">Date Opened</th>
-            </tr>
-        </thead> 
-        <tbody>
-            @foreach (Incident inci in Model)
-            {
-                <tr>
-                    <td>@inci.Title</td>
-                    <td>@inci.Customer.Firstname @inci.Customer.Lastname</td>
-                    <td>@inci.Product.Name</td>
-                    <td>@inci.DateOpened</td>
-                    <td>
-                        <a asp-controller="Incident" asp-action="Edit" asp-route-id="@inci.IncidentId">Edit</a>
-                    </td>
-                    <td>
-                        <a asp-controller="Incident" asp-action="Delete" asp-route-id="@inci.IncidentId">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <div class="d-grid gap-2 d-md-block">
-        <a asp-controller="Incident" asp-action="Add">
-            <button class="btn btn-primary" type="button">Add Incident</button>
-        </a>
-    </div>
+
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Product</th>
+            <th scope="col">Date Opened</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Incident inci in Model)
+        {
+        <tr>
+            <td>@inci.Title</td>
+            <td>@inci.Customer.Firstname @inci.Customer.Lastname</td>
+            <td>@inci.Product.Name</td>
+            <td>@Html.DisplayFor(modelItem => inci.DateOpened)</td>
+            <td>
+                <a asp-controller="Incident" asp-action="Edit" asp-route-id="@inci.IncidentId">Edit</a>
+            </td>
+            <td>
+                <a asp-controller="Incident" asp-action="Delete" asp-route-id="@inci.IncidentId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<div class="d-grid gap-2 d-md-block">
+    <a asp-controller="Incident" asp-action="Add">
+        <button class="btn btn-primary" type="button">Add Incident</button>
+    </a>
 </div>

@@ -30,10 +30,9 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         public int TechnicianId { get; set; }
 
         public Technician Technician { get; set; }
-
-        public string DateOpened { get; set; }
-
-        [Required(ErrorMessage = "Please enter a valid closed date")]
-        public string DateClosed { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime? DateOpened { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime? DateClosed { get; set; }
     }
 }
