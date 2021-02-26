@@ -30,7 +30,6 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             ViewBag.Customers = context.Customers;
             ViewBag.Products = context.Products;
             ViewBag.Technicians = context.Technicians;
-
             return View("Edit", new Incident());
         }
         [HttpGet]
@@ -64,6 +63,14 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpPost]
         public IActionResult Edit(Incident incident)
         {
+            ViewBag.Customers = context.Customers
+                .OrderBy(c => c.CustomerId).ToList();
+            ViewBag.Products = context.Products
+                .OrderBy(c => c.ProductId).ToList();
+            ViewBag.Technicians = context.Technicians
+                .OrderBy(c => c.TechnicianId).ToList();
+            ViewBag.Incidents = context.Incidents
+                .OrderBy(c => c.IncidentId).ToList();
             if (ModelState.IsValid)
             {
                 if (incident.IncidentId == 0)
