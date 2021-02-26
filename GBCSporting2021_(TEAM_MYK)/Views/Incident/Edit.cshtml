@@ -10,8 +10,11 @@
         </div>
     </div>
     <form asp-controller="Incident" asp-action="Edit" method="post">
+        <p><span class="text-danger" asp-validation-for="CustomerId"></span></p>
         <p><span class="text-danger" asp-validation-for="Title"></span></p>
         <p><span class="text-danger" asp-validation-for="Description"></span></p>
+        <p><span class="text-danger" asp-validation-for="ProductId"></span></p>
+        <p><span class="text-danger" asp-validation-for="TechnicianId"></span></p>
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Customer:</label>
@@ -22,7 +25,6 @@
                         <option value="@customer.CustomerId">@customer.Firstname @customer.Lastname</option>     
                      }
                 </select>
-                <span class="text-danger" asp-validation-for="CustomerId"></span>
             </div>
         </div>
         <br />
@@ -36,7 +38,6 @@
                         <option value="@product.ProductId">@product.Name</option>
                      }
                 </select>
-                <span class="text-danger" asp-validation-for="ProductId"></span>
             </div>
         </div>
         <div class="col-md-4">
@@ -61,7 +62,6 @@
                         <option value="@tech.TechnicianId">@tech.Name</option>
                     }
                 </select>
-                <span class="text-danger" asp-validation-for="TechnicianId"></span>
             </div>
         </div>
         <div class="col-md-4">

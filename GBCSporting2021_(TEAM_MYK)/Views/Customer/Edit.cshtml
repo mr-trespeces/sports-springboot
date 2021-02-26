@@ -17,6 +17,7 @@
         <p><span class="text-danger" asp-validation-for="City"></span></p>
         <p><span class="text-danger" asp-validation-for="State"></span></p>
         <p><span class="text-danger" asp-validation-for="Postalcode"></span></p>
+        <span class="text-danger" asp-validation-for="CountryId"></span>
         <div class="col-md-4">
             <label asp-for="Firstname" class="form-label">First name</label>
             <input asp-for="Firstname" class="form-control">
@@ -52,7 +53,6 @@
                         <option value="@country.CountryId">@country.Name</option>
                     }
                 </select>
-                <span class="text-danger" asp-validation-for="CountryId"></span>
             </div>
         </div>
         <input type="hidden" asp-for="CustomerId" />
