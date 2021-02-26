@@ -40,6 +40,8 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Delete(int? id)
         {
+            ViewBag.Customer = context.Customers
+                .FirstOrDefault(c => c.CustomerId == id);
             if (id == null)
             {
                 return RedirectToAction("Index", "Home");

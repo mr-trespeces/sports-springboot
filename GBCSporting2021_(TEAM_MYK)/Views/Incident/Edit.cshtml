@@ -4,77 +4,88 @@
     ViewBag.Title = "Add/Edit Page";
 }
 
-<form asp-controller="Incident" asp-action="Edit" method="post" class="border">
-
-    <div>
-        <label>Customer</label>
-        <select asp-for="CustomerId">
-            @foreach (Customer customer in ViewBag.Customers)
-            {
-                @if (Model.CustomerId == customer.CustomerId)
+<form asp-controller="Incident" asp-action="Edit" method="post">
+    <br />
+    <br />
+    <div class="col-md-4">
+        <div class="input-group mb-6">
+            <label class="input-group-text">Customer:</label>
+            <select asp-for="CustomerId" class="form-select" required>
+                @foreach (Customer customer in ViewBag.Customers)
                 {
-                    <option value="@customer.CustomerId" selected>@customer.Firstname @customer.Lastname</option>
+                    @if (Model.CustomerId == customer.CustomerId)
+                    {
+                        <option value="@customer.CustomerId" selected>@customer.Firstname @customer.Lastname</option>
+                    }
+                    else
+                    {
+                        <option value="@customer.CustomerId" selected>@customer.Firstname @customer.Lastname</option>
+                    }
                 }
-                else
-                {
-                    <option value="@customer.CustomerId">@customer.Firstname @customer.Lastname</option>
-                }
-            }
-        </select>
+            </select>
         </div>
-    <div>
-        <label>Product</label>
-        <select asp-for="ProductId" >
-            @foreach (Product product in ViewBag.Products)
-            {
-                @if (Model.ProductId == product.ProductId)
-                {
-                    <option  value="@product.ProductId" selected>@product.Name</option>
-                }
-                else
-                {
-                    <option value="@product.ProductId">@product.Name</option>
-                }
-            }
-        </select>
     </div>
-    <div>
-        <label asp-for="Title">Title</label>
-        <input asp-for="Title" />
+    <br />
+    <div class="col-md-4">
+        <div class="input-group mb-6">
+            <label class="input-group-text">Product:   </label>
+            <select asp-for="ProductId" class="form-select" required>
+                @foreach (Product product in ViewBag.Products)
+                {
+                    @if (Model.ProductId == product.ProductId)
+                    {
+                        <option value="@product.ProductId" selected>@product.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@product.ProductId" selected>@product.Name</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Title" class="form-label">Title</label>
+        <input asp-for="Title" class="form-control" required>
         <span asp-validation-for="Title"></span>
     </div>
-    <div>
-        <label asp-for="Description">Description</label>
-        <textarea asp-for="Description"></textarea>
-        <span asp-validation-for="Description"></span>
+    <br />
+    <div class="col-md-4">
+        <div class="input-group">
+            <span class="input-group-text">Description:</span>
+            <textarea asp-for="Description" class="form-control" aria-label="With textarea"></textarea>
+            <span asp-validation-for="Description"></span>
+        </div>
     </div>
-    <div>
-        <select asp-for="TechnicianId" id="Technician">
-            @foreach (Technician tech in ViewBag.Technicians)
-            {
-                @if (Model.TechnicianId == tech.TechnicianId)
-                {
-                    <option asp-for="@tech.TechnicianId" value="@tech.TechnicianId" selected>@tech.Name</option>
-                }
-                else
-                {
-                    <option asp-for="@tech.TechnicianId" value="@tech.TechnicianId">@tech.Name</option>
-                }
-            }
-        </select>
-    </div>
-    <div>
-        <label asp-for="DateOpened">Date Opened</label>
-        <input asp-for="DateOpened" />
-    </div>
-    <div>
-        <label asp-for="DateClosed">Date Closed</label>
-        <input asp-for="DateClosed" />
-        <span asp-validation-for="DateClosed"></span>
-    </div>
-    <input type="hidden" asp-for="IncidentId" />
-    <div>
-        <button type="submit">@ViewBag.Action</button>
-        <a asp-action="List">Cancel</a>
-    </div>
+        <br />
+        <div class="col-md-4">
+            <div class="input-group mb-6">
+                <label class="input-group-text">Technician:</label>
+                <select asp-for="TechnicianId" class="form-select" required>
+                    @foreach (Technician tech in ViewBag.Technicians)
+                    {
+                        @if (Model.TechnicianId == tech.TechnicianId)
+                        {
+                            <option value="@tech.TechnicianId" selected>@tech.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@tech.TechnicianId" selected>@tech.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label asp-for="DateOpened" class="form-label">Date Opened</label>
+            <input asp-for="DateOpened" class="form-control" type="date" min="@DateTime.Today" required>
+        </div>
+        <div class="col-md-4">
+            <label asp-for="DateClosed" class="form-label">Date Closed</label>
+            <input asp-for="DateClosed" class="form-control" type="date" min="@DateTime.Today" required>
+        </div>
+        <input type="hidden" asp-for="IncidentId" />
+        <div class="col-md-7">
+            <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
+        </div>
 </form>
