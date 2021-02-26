@@ -13,39 +13,39 @@
     <form asp-controller="Customer" asp-action="Edit" method="post">
         <div class="col-md-4">
             <label asp-for="Firstname" class="form-label">First name</label>
-            <input asp-for="Firstname" class="form-control" required>
+            <input asp-for="Firstname" class="form-control">
             <span class="text-danger" asp-validation-for="Firstname"></span>
         </div>
         <div class="col-md-4">
             <label asp-for="Lastname" class="form-label">Last name</label>
-            <input asp-for="Lastname" class="form-control" required>
+            <input asp-for="Lastname" class="form-control">
             <span class="text-danger" asp-validation-for="Lastname"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="Address" class="form-label">Address</label>
-            <input asp-for="Address" class="form-control" required>
+            <input asp-for="Address" class="form-control">
             <span class="text-danger" asp-validation-for="Address"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="City" class="form-label">City</label>
-            <input asp-for="City" class="form-control" required>
+            <input asp-for="City" class="form-control">
             <span class="text-danger" asp-validation-for="City"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="State" class="form-label">State</label>
-            <input asp-for="State" class="form-control" required>
+            <input asp-for="State" class="form-control">
             <span class="text-danger" asp-validation-for="State"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="Postalcode" class="form-label">Postal Code</label>
-            <input asp-for="Postalcode" class="form-control" required>
+            <input asp-for="Postalcode" class="form-control">
             <span class="text-danger" asp-validation-for="Postalcode"></span>
         </div>
         <br />
         <div class="col-md-12">
             <div class="input-group mb-6">
                 <label class="input-group-text">Choose Country:</label>
-                <select asp-for="CountryId" class="form-select" required>
+                <select asp-for="CountryId" class="form-select">
                     @foreach (Country country in ViewBag.Countries)
                     {
                         @if (Model.CountryId == country.CountryId)
@@ -58,6 +58,7 @@
                         }
                     }
                 </select>
+                <span class="text-danger" asp-validation-for="CountryId"></span>
             </div>
         </div>
         <input type="hidden" asp-for="CustomerId" />

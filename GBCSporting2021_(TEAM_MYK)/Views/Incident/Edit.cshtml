@@ -14,7 +14,7 @@
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Customer:</label>
-                <select asp-for="CustomerId" class="form-select" required>
+                <select asp-for="CustomerId" class="form-select">
                     @foreach (Customer customer in ViewBag.Customers)
                     {
                         @if (Model.CustomerId == customer.CustomerId)
@@ -27,13 +27,14 @@
                         }
                     }
                 </select>
+                <span class="text-danger" asp-validation-for="CustomerId"></span>
             </div>
         </div>
         <br />
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Product:   </label>
-                <select asp-for="ProductId" class="form-select" required>
+                <select asp-for="ProductId" class="form-select">
                     @foreach (Product product in ViewBag.Products)
                     {
                         @if (Model.ProductId == product.ProductId)
@@ -46,11 +47,12 @@
                         }
                     }
                 </select>
+                <span class="text-danger" asp-validation-for="ProductId"></span>
             </div>
         </div>
         <div class="col-md-4">
             <label asp-for="Title" class="form-label">Title</label>
-            <input asp-for="Title" class="form-control" required>
+            <input asp-for="Title" class="form-control">
             <span class="text-danger" asp-validation-for="Title"></span>
         </div>
         <br />
@@ -65,7 +67,7 @@
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Technician:</label>
-                <select asp-for="TechnicianId" class="form-select" required>
+                <select asp-for="TechnicianId" class="form-select">
                     @foreach (Technician tech in ViewBag.Technicians)
                     {
                         @if (Model.TechnicianId == tech.TechnicianId)
@@ -78,6 +80,7 @@
                         }
                     }
                 </select>
+                <span class="text-danger" asp-validation-for="TechnicianId"></span>
             </div>
         </div>
         <div class="col-md-4">

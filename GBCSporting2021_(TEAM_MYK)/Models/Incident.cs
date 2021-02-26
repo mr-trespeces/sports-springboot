@@ -10,8 +10,10 @@ namespace GBCSporting2021__TEAM_MYK_.Models
     {
  
         public int IncidentId { get; set; }
-        public Customer Customer { get; set; } 
+        public Customer Customer { get; set; }
+        [Required(ErrorMessage = "No customer Id found")]
         public int CustomerId { get; set; }
+        [Required(ErrorMessage = "No product Id found")]
         public Product Product { get; set; }
         public int ProductId { get; set; }
         [Required(ErrorMessage = "Please enter a valid title")]
@@ -19,6 +21,7 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         [Required(ErrorMessage = "Please enter a valid description")]
         public string Description { get; set; }
         public int TechnicianId { get; set; }
+        [Required(ErrorMessage = "No Technician Id found")]
         public Technician Technician { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? DateOpened { get; set; }

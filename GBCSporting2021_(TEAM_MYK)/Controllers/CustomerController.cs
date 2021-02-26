@@ -18,20 +18,22 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         public IActionResult List()
         {
             List<Customer> customer = context.Customers
-                .OrderBy(c => c.Firstname).ToList(); ; 
+                .OrderBy(c => c.Firstname).ToList();
             return View("List", customer);
         }
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.Countries = context.Country;
+            ViewBag.Countries = context.Country
+                .OrderBy(c => c.CountryId).ToList();
             ViewBag.Action = "Add";
             return View("Edit", new Customer());
         }
         [HttpGet]
         public IActionResult Edit(int id)
         { 
-            ViewBag.Countries = context.Country;
+            ViewBag.Countries = context.Country
+                .FirstOrDefault(c => c.CountryId == id);
             ViewBag.Action = "Edit";
             var customer = context.Customers
                 .FirstOrDefault(c => c.CustomerId == id);
@@ -56,6 +58,8 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
+            ViewBag.Countries = context.Country
+                .OrderBy(c => c.CountryId).ToList();
             if (ModelState.IsValid)
             {
                 if (customer.CustomerId == 0)
