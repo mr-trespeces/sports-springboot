@@ -47,17 +47,10 @@
             <div class="input-group mb-6">
                 <label class="input-group-text">Choose Country:</label>
                 <select asp-for="CountryId" class="form-select">
-                    <option value="0">---Select Country---</option>
+                    <option selected disabled>--  Select Country  --</option>
                     @foreach (Country country in ViewBag.Countries)
                     {
-                        @if (Model.CountryId == country.CountryId)
-                        {
-                            <option value="@country.CountryId" selected>@country.Name</option>
-                        }
-                        else
-                        {
-                            <option value="@country.CountryId">@country.Name</option>
-                        }
+                        <option value="@country.CountryId">@country.Name</option>
                     }
                 </select>
             </div>
