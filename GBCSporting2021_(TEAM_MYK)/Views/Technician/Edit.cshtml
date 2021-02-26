@@ -3,26 +3,23 @@
     ViewBag.Title = "Add/Edit Page";
 }
 
-<form asp-controller="Technician" asp-action="Edit" method="post" class="border">
-    <div>
-        <label asp-for="Name">Name</label>
-        <input asp-for="Name" />
+<form asp-controller="Technician" asp-action="Edit" method="post">
+    <div class="col-md-4">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name"></span>
     </div>
-    <div>
-        <label asp-for="Email">Email</label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
+    <div class="col-md-7">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" type="text" class="form-control" placeholder="Email">
     </div>
-    <div>
-        <label asp-for="Phone">Phone</label>
-        <input asp-for="Phone" />
-        <span asp-validation-for="Phone"></span>
+    <div class="col-md-7">
+        <label asp-for="Phone" class="form-label">Phone Number</label>
+        <input asp-for="Phone" class="form-control">
     </div>
-
     <input type="hidden" asp-for="TechnicianId" />
-    <div>
-        <button type="submit">@ViewBag.Action</button>
-        <a asp-action="List">Cancel</a>
+    <br />
+    <div class="col-md-7">
+        <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
     </div>
 </form>

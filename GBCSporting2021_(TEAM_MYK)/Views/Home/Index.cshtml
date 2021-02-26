@@ -2,66 +2,72 @@
     ViewBag.Title = "Home - SportsPro";
 }
 
-<h1>SportsPro Technical Support</h1>
-<h2>Sports management software for the sports enthusiast</h2>
-<br />
-<h3>Admin</h3>
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-        <div class="card border-secondary mb-1" style="max-width: 18rem;">
-            <div class="card-header"><a asp-controller="Product" asp-action="List">Manage Products</a></div>
-            <div class="card-body text-secondary">
-                <h5 class="card-title">Products that keeps us alive</h5>
-                <p class="card-text">Managing products with our website is so EASY!</p>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card border-secondary mb-1" style="max-width: 18rem;">
-            <div class="card-header"><a asp-controller="Technician" asp-action="List">Manage Technicians</a></div>
-            <div class="card-body text-secondary">
-                <h5 class="card-title">Technicians can fix your problem.</h5>
-                <p class="card-text">Wanna manage technician? I am here to guide you!</p>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card border-secondary mb-1" style="max-width: 18rem;">
-            <div class="card-header"><a asp-controller="Customer" asp-action="List">Manage Customers</a></div>
-            <div class="card-body text-secondary">
-                <h5 class="card-title">Customer can help us grow</h5>
-                <p class="card-text">Add, edit and delete customers. You can do everything if you click me!</p>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card border-secondary mb-1" style="max-width: 18rem;">
-            <div class="card-header"><a asp-controller="Incident" asp-action="List">Manage Incidents</a></div>
-            <div class="card-body text-secondary">
-                <h5 class="card-title">Incidents can be fixed by us!</h5>
-                <p class="card-text">Someone complaint? I am here to help you fix that!</p>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card border-secondary mb-1" style="max-width: 18rem;">
-            <div class="card-header">Manage Registration</div>
-            <div class="card-body text-secondary">
-                <h5 class="card-title">Registration for customer</h5>
-                <p class="card-text">Add registration whenever you want to add. Register anythiiing</p>
-            </div>
-        </div>
-    </div>
-</div>
 
-<h3>Technicians</h3>
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-        <div class="card border-secondary mb-1" style="max-width: 18rem;">
-            <div class="card-header"><a asp-controller="Technician" asp-action="List">Update Technicians</a></div>
-            <div class="card-body text-secondary">
-                <h5 class="card-title">Technicians can fix your problem.</h5>
-                <p class="card-text">Wanna manage technician? I am here to guide you!</p>
+<div class="container pb-10">
+    <div class="row align-center justify-content-center text-center py-5">
+        <div class="col col-12 col-md-8">
+            <h2 class="text-dark">Welcome Admin! It's nice to see you!</h2>
+            <h2 class="text-dark">SportsPro Technical Support</h2>
+            <p class="lead font-weight-lighter text-muted">Sports management software for the sports enthusiast.</p>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card border-secondary mb-1" style="max-width: 18rem;">
+                <div class="card-header"><a asp-controller="Product" asp-action="List">Manage Products</a></div>
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Products that keeps us alive?</h5>
+                    <p class="card-text">Managing products with our website is so EASY!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-secondary mb-1" style="max-width: 18rem;">
+                <div class="card-header"><a asp-controller="Technician" asp-action="List">Manage Technicians</a></div>
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Technicians problem solver.</h5>
+                    <p class="card-text">Wanna manage technician? I am here to guide you!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-secondary mb-1" style="max-width: 18rem;">
+                <div class="card-header"><a asp-controller="Customer" asp-action="List">Manage Customers</a></div>
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Customer can help us grow$</h5>
+                    <p class="card-text">Add, edit and delete customers. Just click me!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-secondary mb-1" style="max-width: 18rem;">
+                <div class="card-header"><a asp-controller="Incident" asp-action="List">Manage Incidents</a></div>
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Incidents can be fixed by us!</h5>
+                    <p class="card-text">Someone complaint? I am here to help you fix that!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-secondary mb-1" style="max-width: 18rem;">
+                <div class="card-header">Manage Registration</div>
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Registration for customer</h5>
+                    <p class="card-text">Add registration whenever you want to add. Register anythiiing</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Technicians</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card border-secondary mb-1" style="max-width: 18rem;">
+                <div class="card-header"><a asp-controller="Technician" asp-action="List">Update Technicians</a></div>
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Technicians can fix your problem.</h5>
+                    <p class="card-text">Wanna manage technician? I am here to guide you!</p>
+                </div>
             </div>
         </div>
     </div>

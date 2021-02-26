@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <h1><a class="nav-item nav-link navbar-expand-lg font-weight-bold" asp-controller="" asp-action="" >SportsPro</a></h1>
+            <h1><a class="nav-item nav-link navbar-expand-lg font-weight-bold" asp-controller="" asp-action="">SportsPro</a></h1>
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -45,10 +45,30 @@
         </nav>
     </header>
 
-        <div class="container">
-            <main role="main" class="pb-3">
+    <main role="main">
+        <div>
+            <div class="container">
                 @RenderBody()
-            </main>
+            </div>
         </div>
+
+        <footer class="container pt-5">
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>&copy; 2021 That's another EZ Game, Inc. &middot;
+        </footer>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="skin/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+    <script src="../../skin/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
 </body>
+
 </html>
