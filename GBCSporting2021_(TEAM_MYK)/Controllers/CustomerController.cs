@@ -24,6 +24,10 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            List<Country> li = new List<Country>();
+            li = context.Country.ToList();
+            ViewBag.listOfCountry = li;
+
             ViewBag.Countries = context.Country
                 .OrderBy(c => c.CountryId).ToList();
             ViewBag.Action = "Add";
@@ -32,7 +36,10 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.Countries = context.Country;
+            List<Country> li = new List<Country>();
+            li = context.Country.ToList();
+            ViewBag.listOfCountry = li;
+            
             ViewBag.Action = "Edit";
             var customer = context.Customers
                 .FirstOrDefault(c => c.CustomerId == id);

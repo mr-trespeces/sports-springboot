@@ -13,6 +13,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             context = ctx;
         }
         [HttpGet]
+        [Route("technicians")]
         public IActionResult List()
         {
             var technician = context.Technicians;

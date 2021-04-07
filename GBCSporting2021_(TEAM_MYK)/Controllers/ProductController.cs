@@ -14,7 +14,9 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         {
             context = ctx;
         }
+
         [HttpGet]
+        [Route("products")]
         public IActionResult List()
         {
             var product = context.Products;

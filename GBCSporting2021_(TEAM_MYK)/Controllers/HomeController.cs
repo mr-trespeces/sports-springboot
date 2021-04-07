@@ -15,9 +15,14 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         {
             context = ctx;
         }
-
+        [Route("about")]
+        public IActionResult About() {
+            return View();
+        }
+       
         public IActionResult Index()
         {
+           
             return View();
         }
     }

@@ -16,6 +16,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             context = ctx;
         }
         [HttpGet]
+        [Route("incidents")]
         public IActionResult List()
         {
             var inci = context.Incidents
@@ -26,19 +27,37 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            List<Technician> tlist = new List<Technician>();
+            tlist = context.Technicians.ToList();
+            ViewBag.listOfTech = tlist;
+
+            List<Product> plist = new List<Product>();
+            plist = context.Products.ToList();
+            ViewBag.listOfProd = plist;
+
+            List<Customer> clist = new List<Customer>();
+            clist = context.Customers.ToList();
+            ViewBag.listOfCust = clist;
+
             ViewBag.Action = "Add";
-            ViewBag.Customers = context.Customers;
-            ViewBag.Products = context.Products;
-            ViewBag.Technicians = context.Technicians;
             return View("Edit", new Incident());
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.Action = "Edit";
-            ViewBag.Customers = context.Customers;
-            ViewBag.Products = context.Products;
-            ViewBag.Technicians = context.Technicians;
+            List<Technician> tlist = new List<Technician>();
+            tlist = context.Technicians.ToList();
+            ViewBag.listOfTech = tlist;
+
+            List<Product> plist= new List<Product>();
+            plist = context.Products.ToList();
+            ViewBag.listOfProd = plist;
+
+            List<Customer> clist = new List<Customer>();
+            clist = context.Customers.ToList();
+            ViewBag.listOfCust = clist;
+
+            ViewBag.Action = "Edit";   
             var inci = context.Incidents
                .FirstOrDefault(c => c.IncidentId == id);
 
