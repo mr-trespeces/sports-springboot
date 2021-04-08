@@ -18,7 +18,7 @@
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Customer:</label>
-                <select asp-for="CustomerId" class="form-select" asp-items="@(new SelectList(ViewBag.listOfCust, "CustomerId", ""))">>>
+                <select asp-for="CustomerId" class="form-select" asp-items="@(new SelectList(ViewBag.listOfCust, "CustomerId", "Slug"))">>>
                     <option selected disabled>--  Select Customer  --</option>   
                 </select>
             </div>

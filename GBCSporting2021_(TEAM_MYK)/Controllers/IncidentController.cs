@@ -27,17 +27,9 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            List<Technician> tlist = new List<Technician>();
-            tlist = context.Technicians.ToList();
-            ViewBag.listOfTech = tlist;
-
-            List<Product> plist = new List<Product>();
-            plist = context.Products.ToList();
-            ViewBag.listOfProd = plist;
-
-            List<Customer> clist = new List<Customer>();
-            clist = context.Customers.ToList();
-            ViewBag.listOfCust = clist;
+            ViewBag.listOfTech = context.Technicians.OrderBy(c => c.TechnicianId).ToList();
+            ViewBag.listOfProd = context.Products.OrderBy(c => c.ProductId).ToList();
+            ViewBag.listOfCust = context.Customers.OrderBy(c => c.CustomerId).ToList(); 
 
             ViewBag.Action = "Add";
             return View("Edit", new Incident());
@@ -45,21 +37,13 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            List<Technician> tlist = new List<Technician>();
-            tlist = context.Technicians.ToList();
-            ViewBag.listOfTech = tlist;
-
-            List<Product> plist= new List<Product>();
-            plist = context.Products.ToList();
-            ViewBag.listOfProd = plist;
-
-            List<Customer> clist = new List<Customer>();
-            clist = context.Customers.ToList();
-            ViewBag.listOfCust = clist;
-
             ViewBag.Action = "Edit";   
-            var inci = context.Incidents
-               .FirstOrDefault(c => c.IncidentId == id);
+                   var inci = context.Incidents
+                      .FirstOrDefault(c => c.IncidentId == id);
+           
+            ViewBag.listOfTech = context.Technicians.OrderBy(c => c.TechnicianId).ToList();
+            ViewBag.listOfProd = context.Products.OrderBy(c => c.ProductId).ToList();
+            ViewBag.listOfCust = context.Customers.OrderBy(c => c.CustomerId).ToList();
 
             return View(inci);
         }
