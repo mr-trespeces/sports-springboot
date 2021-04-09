@@ -20,19 +20,29 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         }
         public IActionResult Get()
         {
+            var temp = TempData["message"];
             var techs = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
             ViewBag.listOfTech = techs;
             ViewBag.Action = "Select";
             return View();
         }
 
-        public IActionResult List(int id =1)
+        public IActionResult List(int id)
         {
-            ViewBag.Incident = context.Incidents
+            if(id == 0)
+            {
+                TempData["message"] = "*Please select Technician";
+                return RedirectToAction("Get");
+            }
+            else
+            {
+                TempData.Clear();
+                ViewBag.Incident = context.Incidents
                 .Include(i => i.Customer)
                 .Include(i => i.Product)
-                .Where(c => c.TechnicianId == id).ToList();              
-            return View("List");
+                .Where(c => c.TechnicianId == id).ToList();
+                return View("List");
+            }     
         }
 
         [HttpGet]

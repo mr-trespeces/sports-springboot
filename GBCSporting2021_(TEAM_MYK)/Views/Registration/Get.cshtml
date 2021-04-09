@@ -1,13 +1,12 @@
-﻿
-@model Technician
+﻿@model Customer
 @{ ViewBag.Title = "Technician"; }
 
 <form asp-controller="TechIncident" asp-action="List" method="GET">
     <div class="col-md-4">
         <div class="input-group mb-6">
             <label class="input-group-text">@ViewBag.Title</label>
-            <select class="form-select" id="id" name="id" asp-items="@(new SelectList(ViewBag.listOfTech, "TechnicianId", "Name"))">
-                <option selected disabled>--  Select Technician  --</option>
+            <!--   <select class="form-select" id="id" name="id" asp-items="(#new SelectList(ViewBag.listOfCustomer, "CustomerId", "Name"))"> -->
+            <option selected disabled>--  Select Customer  --</option>
             </select>
             <div class="text-danger">@TempData["message"]</div>
         </div>
