@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Incident Manager - SportsPro";
     ViewBag.Action = "incident";
-    var filter = "";
 }
 <div class="container pb-10">
     <div class="row align-center justify-content-center text-center py-5">
@@ -13,19 +12,19 @@
     </div>
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link @(filter=="all"? "active": "")"
+            <a class="nav-link @(ViewBag.Filter =="all"? "active": "")"
                asp-controller="incident"
                asp-action="list"
                asp-route-filter="all">All Incidents</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @(filter=="unassigned" ? "active": "")"
+            <a class="nav-link @(ViewBag.Filter=="unassigned" ? "active": "")"
                asp-controller="incident"
                asp-action="list"
                asp-route-filter="unassigned">Unassigned Incidents</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @(filter=="openincidents" ? "active": "")"
+            <a class="nav-link @(ViewBag.Filter=="openincidents" ? "active": "")"
                asp-controller="incident"
                asp-action="list"
                asp-route-filter="openincidents">Open Incidents</a>
