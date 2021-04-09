@@ -60,7 +60,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             return View("Delete");
         }
         [HttpPost]
-        public RedirectToActionResult Edit(Product product)
+        public IActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
             {    
@@ -80,7 +80,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             else
             {     
                 ViewBag.Action = (product.ProductId == 0) ? "Add" : "Edit";
-                return RedirectToAction("List", "Product", product);
+                return View(product);
             }
         }
         [HttpPost, ActionName("Delete")]

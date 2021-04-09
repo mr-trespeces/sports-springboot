@@ -33,6 +33,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             }
             else
             {
+                ViewData["ProudctId"] = new SelectList(context.Products, "ProductId", "Name");
                 ViewBag.Customer = context.Customers.Find(id);
                 Registration Registration = new Registration();
                 Registration.customer = context.Customers;
