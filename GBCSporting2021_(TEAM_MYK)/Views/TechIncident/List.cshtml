@@ -1,6 +1,7 @@
-﻿@model IEnumerable<Incident>
+﻿@page "{name}"
+@model IEnumerable<Incident>
 @{ ViewBag.Title = "Incident Manager - SportsPro";
-   ViewBag.Action = "Edit"; }
+    ViewBag.Action = "Edit"; }
 <div class="container pb-10">
     <div class="row align-center justify-content-center text-center py-5">
         <div class="col col-12 col-md-8">
@@ -20,17 +21,21 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var inci in ViewBag.List)
+            @foreach (var inci in ViewBag.Incident)
             {
-<tr>
-    <td>@inci.Title</td>
-    <td>@inci.Customer.Firstname @inci.Customer.Lastname</td>
-    <td>@inci.Product.Name</td>
-    <td>@inci.DateOpened</td>
-    <td>
-        <a class="btn btn-success" asp-controller="Incident" asp-action="Edit" asp-route-id="@inci.IncidentId" asp-route-slug="@inci.Slug">@ViewBag.Action</a>
-    </td>
-</tr>            }
+                <tr>
+                    <td>@inci.Title</td>
+                    <td>@inci.Customer.Firstname @inci.Customer.Lastname</td>
+                    <td>@inci.Product.Name</td>
+                    <td>@inci.DateOpened</td>
+                    <td>
+                        <a class="btn btn-success" asp-controller="Incident" asp-action="Edit" asp-route-id="@inci.IncidentId">@ViewBag.Action</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" asp-controller="Incident" asp-action="Delete" asp-route-id="@inci.IncidentId">@ViewBag.Action</a>
+                    </td>
+                </tr>
+}
         </tbody>
     </table>
     <div class="d-grid gap-2 d-md-block">

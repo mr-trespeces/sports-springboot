@@ -18,6 +18,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         {
             context = ctx;
         }
+
         public IActionResult Get()
         {
             var techs = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
@@ -25,18 +26,20 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             ViewBag.Action = "Select";
             return View();
         }
+        
 
         [HttpGet]
-        public IActionResult List(int id)
+        public IActionResult List(int id )
         {
-            ViewBag.Action = "Get";
-            var incident = context.Incidents
-                .Where(c => c.IncidentId == id);
-            return View(incident);
+                ViewBag.Incident = context.Incidents
+                .Include(i => i.Customer)
+                .Include(i => i.Product)
+                .Where(c => c.TechnicianId == id).ToList();              
+            return View("List");
         }
 
-        [HttpPost]
-        public IActionResult List(Incident inci)
+      /*   [HttpPost]
+       public IActionResult List(Incident inci)
         {
             var techId = context.Incidents
             .Include(c => c.Customer)
@@ -57,6 +60,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
                 ViewBag.Action = (inci.TechnicianId == 0) ? "Get" : "List";
                 return RedirectToAction("List", "TechIncident", inci);
             }
-        }
+        } 
+    */
     }
 }
