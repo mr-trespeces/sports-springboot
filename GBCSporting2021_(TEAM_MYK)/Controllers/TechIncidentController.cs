@@ -6,14 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace GBCSporting2021__TEAM_MYK_.Controllers
 {
     public class TechIncidentController : Controller
     {
 
-        const string SessionName = "";
-        const string SessionId = "";
         private SportingContext context { get; set; }
 
         public TechIncidentController(SportingContext ctx)
@@ -22,9 +21,9 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         }
         public IActionResult Get()
         {
-            if (HttpContext.Session.GetString(SessionName) != null)
+            if (HttpContext.Session.GetString("SessionName") != null)
             {
-                return View("List");
+                return RedirectToAction("List");
             }
             else
             {
@@ -34,27 +33,57 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
                 return View();
             }
         }
-        
+
+        public IActionResult Switch()
+        {
+            if (HttpContext.Session.GetString("SessionName") != null)
+            {
+                HttpContext.Session.Clear();
+                return RedirectToAction("Get");
+            }
+            else
+            {
+                var techs = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
+                ViewBag.listOfTech = techs;
+                ViewBag.Action = "Select";
+                return View("Get");
+            }
+        }
 
         [HttpGet]
-        public IActionResult List(int id )
+        public IActionResult List(int? id )
         {
-            var techId = context.Incidents
-            .Include(c => c.Customer)
-            .Include(c => c.Product)
-            .Where(t => t.TechnicianId == id).ToList();
-
-            ViewBag.Incident = techId;
-            var assignedTech = context.Technicians
-                                .FirstOrDefault(t => t.TechnicianId == id);
-
-            if (assignedTech != null)
+            if (HttpContext.Session.GetString("SessionName") != null)
             {
-                HttpContext.Session.SetString(SessionName, assignedTech.Name);
-                HttpContext.Session.SetInt32(SessionId, assignedTech.TechnicianId);
+                ViewBag.Name = JsonConvert.DeserializeObject<Technician>(HttpContext.Session.GetString("SessionName")).Name;
+                int sessID = JsonConvert.DeserializeObject<Technician>(HttpContext.Session.GetString("SessionName")).TechnicianId;
 
-                ViewBag.Name = HttpContext.Session.GetString(SessionName.ToString());
-                ViewBag.Age = HttpContext.Session.GetInt32(SessionId);
+                var techId = context.Incidents
+                .Include(c => c.Customer)
+                .Include(c => c.Product)
+                .Where(t => t.TechnicianId == sessID).ToList();
+
+
+                ViewBag.Incident = techId;
+
+                return View("List");
+
+            }
+            else if (id != null)
+            {
+
+                var techId = context.Incidents
+                .Include(c => c.Customer)
+                .Include(c => c.Product)
+                .Where(t => t.TechnicianId == id).ToList();
+
+                ViewBag.Incident = techId;
+
+                var assignedTech = context.Technicians
+                                    .FirstOrDefault(t => t.TechnicianId == id);
+                Technician tech = assignedTech;
+                HttpContext.Session.SetString("SessionName", JsonConvert.SerializeObject(tech));
+                ViewBag.Name = JsonConvert.DeserializeObject<Technician>(HttpContext.Session.GetString("SessionName")).Name;
                 return View("List");
             }
             else
@@ -62,11 +91,6 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
                 ViewBag.Message = "Choose Technician";
                 return View("Get");
             }
-
-
-
-
-
         }
 
         [HttpGet]
