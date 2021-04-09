@@ -42,11 +42,10 @@ namespace GBCSporting2021__TEAM_MYK_.Models
 
         [Required(ErrorMessage ="Please enter a valid email")]
         [StringLength(51, MinimumLength = 1)]
-        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$")]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$", ErrorMessage = "Please enter a valid email")]
         public string? Email { get; set; }
 
-        [Required(ErrorMessage = "Please enter in (999) 999-9999 format")]
-        [RegularExpression(@"^\(\d{3}\)\s\d{3}-\d{4}")]
+        [RegularExpression(@"^\(\d{3}\)\s\d{3}-\d{4}", ErrorMessage = "Please enter in (999) 999-9999 format")]
         public string? Phone { get; set; }
 
         public string Slug => Firstname?.Replace(' ', '-').ToLower()

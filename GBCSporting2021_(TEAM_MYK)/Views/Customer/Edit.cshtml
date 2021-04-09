@@ -11,54 +11,57 @@
         </div>
     </div>
     <form asp-controller="Customer" asp-action="Edit" method="post">
-        <p><span class="text-danger" asp-validation-for="Firstname"></span></p>
-        <p><span class="text-danger" asp-validation-for="Lastname"></span></p>
-        <p><span class="text-danger" asp-validation-for="Address"></span></p>
-        <p><span class="text-danger" asp-validation-for="City"></span></p>
-        <p><span class="text-danger" asp-validation-for="State"></span></p>
-        <p><span class="text-danger" asp-validation-for="Postalcode"></span></p>
-        <span class="text-danger" asp-validation-for="CountryId"></span>
+        
         <div class="col-md-4">
             <label asp-for="Firstname" class="form-label">First name</label>
             <input asp-for="Firstname" class="form-control">
+            <p><span class="text-danger" asp-validation-for="Firstname"></span></p>
         </div>
         <div class="col-md-4">
             <label asp-for="Lastname" class="form-label">Last name</label>
             <input asp-for="Lastname" class="form-control">
+            <p><span class="text-danger" asp-validation-for="Lastname"></span></p>
         </div>
         <div class="col-md-6">
             <label asp-for="Address" class="form-label">Address</label>
             <input asp-for="Address" class="form-control">
+            <p><span class="text-danger" asp-validation-for="Address"></span></p>
         </div>
         <div class="col-md-6">
             <label asp-for="City" class="form-label">City</label>
             <input asp-for="City" class="form-control">
+            <p><span class="text-danger" asp-validation-for="City"></span></p>
         </div>
         <div class="col-md-6">
             <label asp-for="State" class="form-label">State</label>
             <input asp-for="State" class="form-control">
+            <p><span class="text-danger" asp-validation-for="State"></span></p>
         </div>
         <div class="col-md-6">
             <label asp-for="Postalcode" class="form-label">Postal Code</label>
             <input asp-for="Postalcode" class="form-control">
+            <p><span class="text-danger" asp-validation-for="Postalcode"></span></p>
         </div>
         <br />
         <div class="col-md-12">
             <div class="input-group mb-6">
                 <label class="input-group-text">Choose Country:</label>
-                <select asp-for="CountryId"  id="CountryId" name="CountryId" class="form-select" asp-items="ViewBag.CountryId">
-                    <option selected >--  Select Country  --</option>  
+                <select asp-for="CountryId" id="CountryId" name="CountryId" class="form-select" asp-items="ViewBag.CountryId">
+                    <option selected>--  Select Country  --</option>
                 </select>
             </div>
+            <p><span class="text-danger" asp-validation-for="CountryId"></span></p>
         </div>
         <input type="hidden" asp-for="CustomerId" />
         <div class="col-md-4">
             <label asp-for="Email" class="form-label">Email</label>
             <input asp-for="Email" type="text" class="form-control" placeholder="Email">
+            <p><span class="text-danger" asp-validation-for="Email"></span></p>
         </div>
         <div class="col-md-4">
             <label asp-for="Phone" class="form-label">Phone Number</label>
             <input asp-for="Phone" class="form-control">
+            <p><span class="text-danger" asp-validation-for="Phone"></span></p>
         </div>
         <br />
         <div class="col-md-4">
