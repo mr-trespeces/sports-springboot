@@ -10,6 +10,26 @@
             <p class="lead font-weight-lighter text-muted">Are you ready to manage the unsolve incidents?.</p>
         </div>
     </div>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.Filter =="all"? "active": "")"
+               asp-controller="incident"
+               asp-action="list"
+               asp-route-filter="all">All Incidents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.Filter=="unassigned" ? "active": "")"
+               asp-controller="incident"
+               asp-action="list"
+               asp-route-filter="unassigned">Unassigned Incidents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.Filter=="openincidents" ? "active": "")"
+               asp-controller="incident"
+               asp-action="list"
+               asp-route-filter="openincidents">Open Incidents</a>
+        </li>
+    </ul>
     <table class="table">
         <thead>
             <tr>

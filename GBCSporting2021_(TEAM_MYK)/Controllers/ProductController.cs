@@ -14,7 +14,15 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         {
             context = ctx;
         }
+
+        public RedirectToActionResult Cancel()
+        {
+            TempData.Clear();
+            return RedirectToAction("List");
+        }
+
         [HttpGet]
+        [Route("products")]
         public IActionResult List()
         {
             var product = context.Products;
@@ -42,20 +50,21 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             ViewBag.Product = product;
             if (id == null)
             {
-                return RedirectToAction("List", "Product");
+                return View("List", "Product");
             }
             Product prod = context.Products.Find(id);
             if (prod == null)
             {
-                return RedirectToAction("List", "Product");
+                return View("List", "Product");
             }
             return View("Delete");
         }
         [HttpPost]
-        public IActionResult Edit(Product product)
+        public RedirectToActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
             {
+                TempData["message"] = $"Product {product.Name} was successfully edited.";
                 if (product.ProductId == 0)
                 {
                     context.Products.Update(product);
@@ -65,21 +74,23 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
                     context.Products.Update(product);
                 }
                 context.SaveChanges();
-                return RedirectToAction("List", "Product");
+                return RedirectToAction("List", "Product", product);
             }
             else
             {
+                TempData["message"] = $"Product {product.Name} was successfully added.";
                 ViewBag.Action = (product.ProductId == 0) ? "Add" : "Edit";
-                return View(product);
+                return RedirectToAction("List", "Product", product);
             }
         }
         [HttpPost, ActionName("Delete")]
-        public IActionResult Delete(int id)
-        {
+        public RedirectToActionResult Delete(int id)
+        {  
             Product product = context.Products.Find(id);
+            TempData["message"] = $"Product {product.Name} was successfully deleted.";
             context.Products.Remove(product);
             context.SaveChanges();
-            return RedirectToAction("List", "Product");
+            return RedirectToAction("List" , "product");
         }
     }
 }

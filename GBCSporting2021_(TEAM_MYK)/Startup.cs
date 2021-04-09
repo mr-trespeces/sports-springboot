@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using GBCSporting2021__TEAM_MYK_.Models;
+using System;
 
 namespace GBCSporting2021__TEAM_MYK_
 {
@@ -14,20 +15,22 @@ namespace GBCSporting2021__TEAM_MYK_
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
+            });
             services.AddRouting(options =>
             {
                 options.LowercaseUrls = true;
                 options.AppendTrailingSlash = true;
             });
-
-            services.AddControllersWithViews();
-
+            services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddDbContext<SportingContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SportingContext")));
         }
 
@@ -46,7 +49,7 @@ namespace GBCSporting2021__TEAM_MYK_
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();

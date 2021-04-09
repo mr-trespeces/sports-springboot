@@ -1,0 +1,79 @@
+﻿@model Incident
+@{
+    ViewBag.Title = "Edit Incident";
+}
+<div class="container pb-10">
+    <div class="row align-center justify-content-center text-center py-5">
+        <div class="col col-12 col-md-8">
+            <h2 class="text-dark">@ViewBag.Title</h2>
+            <p class="lead font-weight-lighter text-muted">Update all the data until it lasts.</p>
+        </div>
+    </div>
+    <form asp-controller="TechIncident" asp-action="Edit" method="post">
+        <p><span class="text-danger" asp-validation-for="CustomerId"></span></p>
+        <p><span class="text-danger" asp-validation-for="Title"></span></p>
+        <p><span class="text-danger" asp-validation-for="Description"></span></p>
+        <p><span class="text-danger" asp-validation-for="ProductId"></span></p>
+        <p><span class="text-danger" asp-validation-for="TechnicianId"></span></p>
+        <div class="col-md-4">
+            <div class="input-group mb-6">
+                <label class="input-group-text">Technician:</label>
+                <input type="text" asp-for="TechnicianId" value="@ViewBag.tech" disabled class="col-form-label">
+            </div>
+        </div>
+        <br />
+        <div class="col-md-4">
+            <div class="input-group mb-6">
+                <label asp-for="Customer" class="input-group-text">Customer:</label>
+                <input asp-for="Customer" value="@Model.Customer.Firstname @Model.Customer.Lastname" disabled class="col-form-label">
+            </div>
+        </div>
+        <br />
+        <div class="col-md-4">
+            <div class="input-group mb-6">
+                <label asp-for="Product" class="input-group-text">Product:</label>
+                <input asp-for="Product" type="text" value="@Model.Product.Name" disabled class="col-form-label">
+            </div>
+        </div>
+        <br />
+        <div class="col-md-4">
+            <div class="input-group mb-6">
+                <label asp-for="Title" class="input-group-text">Title:</label>
+                <input asp-for="Title" type="text" value="@Model.Title" disabled class="col-form-label">
+            </div>
+        </div>
+        <br />
+        <div class="col-md-4">
+            <div class="input-group mb-6">
+                <label asp-for="DateOpened" class="input-group-text">Date Opened:</label>
+                <input asp-for="DateOpened" type="text" value="@String.Format("{0:yyyy-MM-dd}", Model.DateOpened)" disabled class="col-form-label">
+            </div>
+        </div>
+        <br />
+        <div class="col-md-4">
+            <div class="input-group mb-6">
+                <label asp-for="Description" class="input-group-text">Description:</label>
+                <textarea asp-for="Description" value="@Model.Description" class="col-form-label"></textarea>
+            </div>
+        </div>
+        <br />
+        <div class="col-md-4">
+            <div class="input-group mb-2">
+                <label class="input-group-text">Date Closed:</label>
+                <input asp-for="DateClosed" type="date" value="@String.Format("{0:yyyy-MM-dd}", Model.DateClosed)" class="col-form-label">
+            </div>
+        </div>
+        <input type="hidden" asp-for="IncidentId" />
+        <input type="hidden" asp-for="Title" />
+        <input type="hidden" asp-for="Customer" />
+        <input type="hidden" asp-for="CustomerId" />
+        <input type="hidden" asp-for="ProductId" />
+        <input type="hidden" asp-for="DateOpened" />
+        <input type="hidden" asp-for="TechnicianId" />
+        <br />
+        <div class="col-md-7">
+            <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
+            <a asp-controller="TechIncident" asp-action="List" asp-route-id="@Model.TechnicianId" class="btn btn-primary">Cancel</a>
+        </div>
+    </form>
+</div>

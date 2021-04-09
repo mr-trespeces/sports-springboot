@@ -1,0 +1,42 @@
+﻿@page "{name}"
+@model IEnumerable<Incident>
+@{ ViewBag.Title = "Technician: ";
+    ViewBag.Action = "Edit"; }
+<div class="container pb-10">
+    <div class="row align-center justify-content-center text-center py-5">
+        <div class="col col-12 col-md-8">
+            <h2 class="text-dark">@ViewBag.Title @ViewBag.Name</h2>
+            <p class="lead font-weight-lighter text-muted">Are you ready to manage the unsolve incidents?.</p>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Product</th>
+                <th scope="col">Date Opened</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var inci in ViewBag.Incident)
+            {
+                <tr>
+                    <td>@inci.Title</td>
+                    <td>@inci.Customer.Firstname @inci.Customer.Lastname</td>
+                    <td>@inci.Product.Name</td>
+                    <td>@inci.DateOpened</td>
+                    <td>
+                        <a class="btn btn-success" asp-controller="TechIncident" asp-action="Edit" asp-route-id="@inci.IncidentId">@ViewBag.Action</a>
+                    </td>
+                </tr>
+}
+        </tbody>
+    </table>
+    <div class="d-grid gap-2 d-md-block">
+        <a asp-controller="TechIncident" asp-action="Get">
+            <button class="btn btn-primary" type="button">Switch Technician</button>
+        </a>
+    </div>
+</div>

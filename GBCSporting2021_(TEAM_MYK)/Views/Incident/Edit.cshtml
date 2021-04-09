@@ -18,12 +18,8 @@
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Customer:</label>
-                <select asp-for="CustomerId" class="form-select">
-                    <option selected disabled>--  Select Customer  --</option>
-                    @foreach (Customer customer in ViewBag.Customers)
-                     {
-                        <option value="@customer.CustomerId">@customer.Firstname @customer.Lastname</option>     
-                     }
+                <select asp-for="CustomerId" class="form-select" asp-items="@(new SelectList(ViewBag.listOfCust, "CustomerId", "Slug"))">>>
+                    <option selected disabled>--  Select Customer  --</option>   
                 </select>
             </div>
         </div>
@@ -31,12 +27,8 @@
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Product:   </label>
-                <select asp-for="ProductId" class="form-select">
-                    <option selected disabled>--  Select Product  --</option>
-                    @foreach (Product product in ViewBag.Products)
-                     {   
-                        <option value="@product.ProductId">@product.Name</option>
-                     }
+                <select asp-for="ProductId" class="form-select" asp-items="@(new SelectList(ViewBag.listOfProd, "ProductId", "Name"))">
+                    <option selected disabled>--  Select Product  --</option>             
                 </select>
             </div>
         </div>
@@ -55,12 +47,8 @@
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Technician:</label>
-                <select asp-for="TechnicianId" class="form-select">
+                <select asp-for="TechnicianId" class="form-select" asp-items="@(new SelectList(ViewBag.listOfTech, "TechnicianId", "Name"))">
                     <option selected disabled>--  Select Product  --</option>
-                    @foreach (Technician tech in ViewBag.Technicians)
-                    {
-                        <option value="@tech.TechnicianId">@tech.Name</option>
-                    }
                 </select>
             </div>
         </div>

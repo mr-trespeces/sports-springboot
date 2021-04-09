@@ -16,31 +16,58 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             context = ctx;
         }
         [HttpGet]
-        public IActionResult List()
+        [Route("incidents")]
+        public IActionResult List(string filter = "")
         {
-            var inci = context.Incidents
-               .Include(c => c.Customer)
-               .Include(c => c.Product);
-            return View("List", inci);
+
+            if (filter == "openincidents")
+            {
+                var inci = context.Incidents
+                   .Include(c => c.Customer)
+                   .Include(c => c.Product)
+                   .Where(c => c.DateOpened == c.DateClosed);
+
+                ViewBag.Filter = "openincidents";
+                return View("List", inci);
+            }
+            else if(filter == "unassigned"){
+                var inci = context.Incidents
+                    .Include(c => c.Customer)
+                    .Include(c => c.Product)
+                    .Where(c => c.TechnicianId == null);
+                ViewBag.Filter = "unassigned";
+                return View("List", inci);
+            }
+            else
+            {
+                ViewBag.Filter = "all";
+                var inci = context.Incidents
+                .Include(c => c.Customer)
+                .Include(c => c.Product);
+                return View("List", inci);
+            }
+
         }
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.listOfTech = context.Technicians.OrderBy(c => c.TechnicianId).ToList();
+            ViewBag.listOfProd = context.Products.OrderBy(c => c.ProductId).ToList();
+            ViewBag.listOfCust = context.Customers.OrderBy(c => c.CustomerId).ToList(); 
+
             ViewBag.Action = "Add";
-            ViewBag.Customers = context.Customers;
-            ViewBag.Products = context.Products;
-            ViewBag.Technicians = context.Technicians;
             return View("Edit", new Incident());
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.Action = "Edit";
-            ViewBag.Customers = context.Customers;
-            ViewBag.Products = context.Products;
-            ViewBag.Technicians = context.Technicians;
-            var inci = context.Incidents
-               .FirstOrDefault(c => c.IncidentId == id);
+            ViewBag.Action = "Edit";   
+                   var inci = context.Incidents
+                      .FirstOrDefault(c => c.IncidentId == id);
+           
+            ViewBag.listOfTech = context.Technicians.OrderBy(c => c.TechnicianId).ToList();
+            ViewBag.listOfProd = context.Products.OrderBy(c => c.ProductId).ToList();
+            ViewBag.listOfCust = context.Customers.OrderBy(c => c.CustomerId).ToList();
 
             return View(inci);
         }
