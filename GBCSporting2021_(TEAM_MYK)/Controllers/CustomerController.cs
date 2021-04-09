@@ -27,6 +27,11 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         //        return Json(true);
         //    }
         //}
+        public RedirectToActionResult Cancel()
+        {
+            TempData.Clear();
+            return RedirectToAction("List");
+        }
 
         [HttpGet]
         [Route("customers")]
@@ -46,6 +51,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewData["CountryId"] = new SelectList(context.Country, "CountryId", "Name");
             ViewBag.listOfCountry = context.Country.OrderBy(c => c.CountryId).ToList();    
             ViewBag.Action = "Edit";
             var customer = context.Customers
@@ -71,6 +77,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
+            ViewData["CountryId"] = new SelectList(context.Country, "CountryId", "Name");
             var selectedIds = Request.Form["CountryId"];
             ViewBag.Countries = context.Country
                 .OrderBy(c => c.CountryId).ToList();
@@ -78,10 +85,12 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             {
                 if (customer.CustomerId == 0)
                 {
+                    TempData["message"] = $"Customer {customer.Firstname} {customer.Lastname} was successfully added.";
                     context.Customers.Add(customer);
                 }
                 else
                 {
+                    TempData["message"] = $"Customer {customer.Firstname} {customer.Lastname} was successfully edited.";
                     context.Customers.Update(customer);
                 }
                 context.SaveChanges();
@@ -89,7 +98,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             }
             else
             {
-                ViewData["CountryId"] = new SelectList(context.Country, "CountryId", "Name");
+               
                 ViewBag.Action = (customer.CustomerId == 0) ? "Add" : "Edit";
                 return View(customer);
             }
@@ -100,6 +109,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             Customer customer = context.Customers.Find(id);
             context.Customers.Remove(customer);
             context.SaveChanges();
+            TempData["message"] = $"Customer {customer.Firstname} {customer.Lastname} was successfully deleted.";
             return RedirectToAction("List", "customer");
         }
     }

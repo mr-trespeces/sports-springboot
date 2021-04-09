@@ -63,22 +63,22 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         public RedirectToActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
-            {
-                TempData["message"] = $"Product {product.Name} was successfully edited.";
+            {    
                 if (product.ProductId == 0)
                 {
-                    context.Products.Update(product);
+                    TempData["message"] = $"Product {product.Name} was successfully added.";
+                    context.Products.Add(product);
                 }
                 else
                 {
+                    TempData["message"] = $"Product {product.Name} was successfully edited.";
                     context.Products.Update(product);
                 }
                 context.SaveChanges();
                 return RedirectToAction("List", "Product", product);
             }
             else
-            {
-                TempData["message"] = $"Product {product.Name} was successfully added.";
+            {     
                 ViewBag.Action = (product.ProductId == 0) ? "Add" : "Edit";
                 return RedirectToAction("List", "Product", product);
             }

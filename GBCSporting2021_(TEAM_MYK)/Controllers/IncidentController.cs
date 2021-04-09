@@ -19,7 +19,6 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [Route("incidents")]
         public IActionResult List(string filter = "")
         {
-
             if (filter == "openincidents")
             {
                 var inci = context.Incidents
@@ -51,9 +50,9 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.listOfTech = context.Technicians.OrderBy(c => c.TechnicianId).ToList();
-            ViewBag.listOfProd = context.Products.OrderBy(c => c.ProductId).ToList();
-            ViewBag.listOfCust = context.Customers.OrderBy(c => c.CustomerId).ToList(); 
+            ViewData["CustomerId"] = new SelectList(context.Customers, "CustomerId", "Slug");
+            ViewData["ProductId"] = new SelectList(context.Products, "ProductId", "Name");
+            ViewData["TechnicianId"] = new SelectList(context.Technicians, "TechnicianId", "Name");         
 
             ViewBag.Action = "Add";
             return View("Edit", new Incident());
@@ -64,10 +63,10 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             ViewBag.Action = "Edit";   
                    var inci = context.Incidents
                       .FirstOrDefault(c => c.IncidentId == id);
-           
-            ViewBag.listOfTech = context.Technicians.OrderBy(c => c.TechnicianId).ToList();
-            ViewBag.listOfProd = context.Products.OrderBy(c => c.ProductId).ToList();
-            ViewBag.listOfCust = context.Customers.OrderBy(c => c.CustomerId).ToList();
+
+            ViewData["CustomerId"] = new SelectList(context.Customers, "CustomerId", "Name");
+            ViewData["ProductId"] = new SelectList(context.Products, "ProductId", "Name");
+            ViewData["TechnicianId"] = new SelectList(context.Technicians, "TechnicianId", "Name");
 
             return View(inci);
         }
@@ -90,12 +89,10 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpPost]
         public IActionResult Edit(Incident incident)
         {
-                ViewBag.Customers = context.Customers
-                    .OrderBy(c => c.CustomerId).ToList();
-                ViewBag.Products = context.Products
-                    .OrderBy(c => c.ProductId).ToList();
-                ViewBag.Technicians = context.Technicians
-                    .OrderBy(c => c.TechnicianId).ToList();
+            var techId = Request.Form["TechnicianId"];
+            var prodId = Request.Form["ProductId"];
+            var custId = Request.Form["CustomerId"];
+
             if (ModelState.IsValid)
             {
                 if (incident.IncidentId == 0)

@@ -10,24 +10,24 @@
         </div>
     </div>
     <form asp-controller="Product" asp-action="Edit" method="post">
-        <p><span class="text-danger" asp-validation-for="Code"></span></p>
-        <p><span class="text-danger" asp-validation-for="Name"></span></p>
-        <p><span class="text-danger" asp-validation-for="Price"></span></p>
         <div class="col-md-4">
             <label asp-for="Code" class="form-label">Code</label>
             <input asp-for="Code" class="form-control" />
+            <p><span class="text-danger" asp-validation-for="Code"></span></p>
         </div>
         <div class="col-md-4">
             <label asp-for="Name" class="form-label">Name</label>
             <input asp-for="Name" class="form-control" />
+            <p><span class="text-danger" asp-validation-for="Name"></span></p>
         </div>
         <div class="col-md-4">
-            <label asp-for="Name" class="form-label">Price</label>
+            <label asp-for="Price" class="form-label">Price</label>
             <div class="input-group mb-3">
                 <span class="input-group-text">$</span>
                 <span class="input-group-text">0.00</span>
                 <input asp-for="Price" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
             </div>
+            <p><span class="text-danger" asp-validation-for="Price"></span></p>
         </div>
         <div class="col-md-4">
             <label asp-for="ReleaseDate" class="form-label">Released Date</label>

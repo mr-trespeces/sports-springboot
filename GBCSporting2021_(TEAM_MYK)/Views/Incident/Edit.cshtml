@@ -10,15 +10,10 @@
         </div>
     </div>
     <form asp-controller="Incident" asp-action="Edit" method="post">
-        <p><span class="text-danger" asp-validation-for="CustomerId"></span></p>
-        <p><span class="text-danger" asp-validation-for="Title"></span></p>
-        <p><span class="text-danger" asp-validation-for="Description"></span></p>
-        <p><span class="text-danger" asp-validation-for="ProductId"></span></p>
-        <p><span class="text-danger" asp-validation-for="TechnicianId"></span></p>
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Customer:</label>
-                <select asp-for="CustomerId" class="form-select" asp-items="@(new SelectList(ViewBag.listOfCust, "CustomerId", "Slug"))">>>
+                <select asp-for="CustomerId" id="CustomerId" name="CustomerId" class="form-select" asp-items="ViewBag.CustomerId">
                     <option selected disabled>--  Select Customer  --</option>   
                 </select>
             </div>
@@ -27,29 +22,33 @@
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Product:   </label>
-                <select asp-for="ProductId" class="form-select" asp-items="@(new SelectList(ViewBag.listOfProd, "ProductId", "Name"))">
-                    <option selected disabled>--  Select Product  --</option>             
+                <select asp-for="ProductId" id="ProductId" name="ProductId" class="form-select" asp-items="ViewBag.ProductId">
+                    <p><span class="text-danger" asp-validation-for="ProductId"></span></p>
+                    <option selected disabled>--  Select Product  --</option>
                 </select>
             </div>
         </div>
         <div class="col-md-4">
             <label asp-for="Title" class="form-label">Title</label>
             <input asp-for="Title" class="form-control">
+            <p><span class="text-danger" asp-validation-for="Title"></span></p>
         </div>
         <br />
         <div class="col-md-4">
             <div class="input-group">
                 <span class="input-group-text">Description:</span>
                 <textarea asp-for="Description" class="form-control" aria-label="With textarea"></textarea>
+                <p><span class="text-danger" asp-validation-for="Description"></span></p>
             </div>
         </div>
         <br />
         <div class="col-md-4">
             <div class="input-group mb-6">
                 <label class="input-group-text">Technician:</label>
-                <select asp-for="TechnicianId" class="form-select" asp-items="@(new SelectList(ViewBag.listOfTech, "TechnicianId", "Name"))">
+                <select asp-for="TechnicianId" id="TechnicianId" name="TechnicianId" class="form-select" asp-items="ViewBag.TechnicianId">
                     <option selected disabled>--  Select Product  --</option>
                 </select>
+                <p><span class="text-danger" asp-validation-for="TechnicianId"></span></p>
             </div>
         </div>
         <div class="col-md-4">
