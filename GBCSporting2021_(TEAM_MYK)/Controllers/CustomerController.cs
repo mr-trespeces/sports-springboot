@@ -25,12 +25,8 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Add()
         {    
-          //  ViewBag.listOfCountry = context.Country.OrderBy(c => c.CountryId).ToList();
             ViewData["CountryId"] = new SelectList(context.Country, "CountryId", "Name");
-          //  ViewBag.Countries = context.Country
-           //     .OrderBy(c => c.CountryId).ToList();
             ViewBag.Action = "Add";
-           
             return View("Edit", new Customer());
         }
         [HttpGet]

@@ -10,10 +10,5 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         public int RegistrationId { get; set; }
         public IEnumerable<Product> products { get; set; }
         public IEnumerable<Customer> customer { get; set; }
-        public Registration()
-        {
-            this.customer = new HashSet<Customer>();
-            this.products = new HashSet<Product>();
-        }
     }
 }

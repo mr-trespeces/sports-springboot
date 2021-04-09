@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GBCSporting2021__TEAM_MYK_.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GBCSporting2021__TEAM_MYK_.Controllers
 {
@@ -17,9 +18,8 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         }
         public IActionResult Get()
         {
-            var temp = TempData["message"];
-            var customer = context.Customers.OrderBy(c => c.CustomerId).ToList();
-            ViewBag.listOfCustomer = customer;
+            var techs = context.Customers.OrderBy(t => t.CustomerId).ToList();
+            ViewBag.listOfTech = techs;
             ViewBag.Action = "Select";
             return View();
         }
@@ -31,7 +31,16 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
                 TempData["message"] = "*Please select Customer";
                 return RedirectToAction("Get");
             }
-            return RedirectToAction("Get");
+            else
+            {
+                ViewBag.Customer = context.Customers.Find(id);
+                Registration Registration = new Registration();
+                Registration.customer = context.Customers;
+                Registration.products = context.Products;
+                ViewBag.Registrations = Registration;    
+
+                return View("Registrations");
+            }
         }
     }
 }
