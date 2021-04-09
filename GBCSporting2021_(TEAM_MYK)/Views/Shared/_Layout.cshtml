@@ -26,23 +26,23 @@
                             <a class="nav-link @(action == "home" ? "active" : "")" asp-controller="" asp-action="">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(action == "product" || action == "home"  ? "active" : "")" asp-controller="Product" asp-action="List">Products</a>
+                            <a class="nav-link @(action == "product" ? "active" : "")" asp-controller="Product" asp-action="List">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(action == "technician" || action == "home"? "active" : "")" asp-controller="Technician" asp-action="List">Technician</a>
+                            <a class="nav-link @(action == "technician" ? "active" : "")" asp-controller="Technician" asp-action="List">Technician</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(action == "customer" || action == "home"? "active" : "")" asp-controller="Customer" asp-action="List">Customers</a>
+                            <a class="nav-link @(action == "customer" ? "active" : "")" asp-controller="Customer" asp-action="List">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(action == "incident" || action == "home" ? "active" : "")" asp-controller="Incident" asp-action="List">Incidents</a>
+                            <a class="nav-link @(action == "incident"  ? "active" : "")" asp-controller="Incident" asp-action="List">Incidents</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled">Registrations</a>
+                            <a class="nav-link @(action == "Registration"  ? "active" : "")" asp-controller="Registration" asp-action="Get">Incidents</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item float-right">
 
-                            <a class="nav-link @(action == "about" || action == "home" ? "active" : "")" asp-controller="About" asp-action="Index">About</a>
+                            <a class="nav-link @(action == "about" ? "active" : "")" asp-controller="Home" asp-action="About" >About</a>
                         </li>
                     </ul>
                 </div>
