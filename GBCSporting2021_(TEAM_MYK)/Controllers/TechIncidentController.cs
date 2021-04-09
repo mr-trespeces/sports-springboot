@@ -18,7 +18,6 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         {
             context = ctx;
         }
-
         public IActionResult Get()
         {
             var techs = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
@@ -26,41 +25,34 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             ViewBag.Action = "Select";
             return View();
         }
-        
 
-        [HttpGet]
-        public IActionResult List(int id )
+        public IActionResult List(int id =1)
         {
-                ViewBag.Incident = context.Incidents
+            ViewBag.Incident = context.Incidents
                 .Include(i => i.Customer)
                 .Include(i => i.Product)
                 .Where(c => c.TechnicianId == id).ToList();              
             return View("List");
         }
 
-      /*   [HttpPost]
-       public IActionResult List(Incident inci)
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
-            var techId = context.Incidents
-            .Include(c => c.Customer)
-            .Include(c => c.Product)
-            .Where(t => t.TechnicianId == inci.TechnicianId).ToList();
-            ViewBag.List = techId;
+            ViewBag.tech = context.Technicians.Find(id).Name;
+            ViewBag.Action = "Edit";
+            var incident = context.Incidents
+                .Include(i => i.Customer)
+                .Include(i => i.Product)
+                .FirstOrDefault(i => i.IncidentId == id);
+            return View(incident);
+        }
 
-            var assignedTech = context.Technicians
-                                .FirstOrDefault(t => t.TechnicianId == inci.TechnicianId);
-
-            if (ModelState.IsValid)
-            {
-                TempData["message"] = $"Product {assignedTech.Name} was successfully edited.";
-                return RedirectToAction("List", "TechIncident", inci);
-            }
-            else
-            {
-                ViewBag.Action = (inci.TechnicianId == 0) ? "Get" : "List";
-                return RedirectToAction("List", "TechIncident", inci);
-            }
-        } 
-    */
+        [HttpPost]
+        public RedirectToActionResult Edit(Incident incident)
+        {        
+            context.Incidents.Update(incident);
+            context.SaveChanges();
+            return RedirectToAction("List", "TechIncident");  
+        }   
     }
 }
