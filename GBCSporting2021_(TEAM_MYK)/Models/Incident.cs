@@ -27,5 +27,6 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DateClosed { get; set; }
         public string Slug => Title?.Replace(' ', '-').ToLower();
+
     }
 }

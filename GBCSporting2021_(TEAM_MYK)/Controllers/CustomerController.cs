@@ -16,7 +16,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
 
         [HttpGet]
         public IActionResult List()
-        {
+        { 
             List<Customer> customer = context.Customers
                 .OrderBy(c => c.Firstname).ToList();
             return View("List", customer);
@@ -24,10 +24,12 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+           
             ViewBag.listOfCountry = context.Country.OrderBy(c => c.CountryId).ToList();
             ViewBag.Countries = context.Country
                 .OrderBy(c => c.CountryId).ToList();
             ViewBag.Action = "Add";
+           
             return View("Edit", new Customer());
         }
         [HttpGet]

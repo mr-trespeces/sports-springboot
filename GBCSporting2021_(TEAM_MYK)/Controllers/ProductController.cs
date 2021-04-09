@@ -84,7 +84,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             }
         }
         [HttpPost, ActionName("Delete")]
-        public IActionResult Delete(int id)
+        public RedirectToActionResult Delete(int id)
         {  
             Product product = context.Products.Find(id);
             TempData["message"] = $"Product {product.Name} was successfully deleted.";
