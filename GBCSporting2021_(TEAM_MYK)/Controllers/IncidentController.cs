@@ -17,12 +17,32 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         }
         [HttpGet]
         [Route("incidents")]
-        public IActionResult List()
+        public IActionResult List(string filter = "")
         {
-            var inci = context.Incidents
-               .Include(c => c.Customer)
-               .Include(c => c.Product);
-            return View("List", inci);
+
+            if (filter == "openincidents")
+            {
+                var inci = context.Incidents
+                   .Include(c => c.Customer)
+                   .Include(c => c.Product)
+                   .Where(c => c.DateClosed == null);
+                return View("List", inci);
+            }
+            else if(filter == "unassigned"){
+                var inci = context.Incidents
+                    .Include(c => c.Customer)
+                    .Include(c => c.Product)
+                    .Where(c => c.TechnicianId == null);
+                return View("List", inci);
+            }
+            else
+            {
+                var inci = context.Incidents
+                    .Include(c => c.Customer)
+                    .Include(c => c.Product);
+                return View("List", inci);
+            }
+
         }
         [HttpGet]
         public IActionResult Add()
