@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using GBCSporting2021__TEAM_MYK_.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -14,6 +16,18 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             context = ctx;
         }
 
+        //[AcceptVerbs("Get", "Post")]
+        //[AllowAnonymous]
+        //public async Task<IActionResult> IsEmailInUse(string email)
+        //{
+        //    var user = await userManager.FindByEmailAsyn(email);
+        //
+        //    if (user == null)
+        //    {
+        //        return Json(true);
+        //    }
+        //}
+
         [HttpGet]
         [Route("customers")]
         public IActionResult List()
@@ -25,12 +39,8 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Add()
         {    
-          //  ViewBag.listOfCountry = context.Country.OrderBy(c => c.CountryId).ToList();
             ViewData["CountryId"] = new SelectList(context.Country, "CountryId", "Name");
-          //  ViewBag.Countries = context.Country
-           //     .OrderBy(c => c.CountryId).ToList();
             ViewBag.Action = "Add";
-           
             return View("Edit", new Customer());
         }
         [HttpGet]
