@@ -15,6 +15,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         }
 
         [HttpGet]
+        [Route("customers")]
         public IActionResult List()
         { 
             List<Customer> customer = context.Customers
