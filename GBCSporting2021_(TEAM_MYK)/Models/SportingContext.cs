@@ -12,12 +12,12 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         {
 
         }
-
         public DbSet<Product> Products { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Technician> Technicians { get; set; }
         public DbSet<Country> Country { get; set; }
         public DbSet<Incident> Incidents { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().HasData(

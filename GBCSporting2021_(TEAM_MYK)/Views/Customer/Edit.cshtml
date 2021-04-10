@@ -46,8 +46,8 @@
         <div class="col-md-12">
             <div class="input-group mb-6">
                 <label class="input-group-text">Choose Country:</label>
-                <select asp-for="CountryId" class="form-select" asp-items="@(new SelectList(ViewBag.listOfCountry, "CountryId", "Name"))">
-                    <option selected disabled>--  Select Country  --</option>  
+                <select asp-for="CountryId"  id="CountryId" name="CountryId" class="form-select" asp-items="ViewBag.CountryId">
+                    <option selected >--  Select Country  --</option>  
                 </select>
             </div>
         </div>

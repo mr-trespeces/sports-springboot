@@ -1,5 +1,4 @@
-﻿@page "{name}"
-@model IEnumerable<Incident>
+﻿@model IEnumerable<Incident>
 @{ ViewBag.Title = "Technician: ";
     ViewBag.Action = "Edit"; }
 <div class="container pb-10">
@@ -21,7 +20,7 @@
         </thead>
         <tbody>
             @foreach (var inci in ViewBag.Incident)
-            {
+            {     
                 <tr>
                     <td>@inci.Title</td>
                     <td>@inci.Customer.Firstname @inci.Customer.Lastname</td>
@@ -34,6 +33,7 @@
 }
         </tbody>
     </table>
+    
     <div class="d-grid gap-2 d-md-block">
         <a asp-controller="TechIncident" asp-action="Switch">
             <button class="btn btn-primary" type="button">Switch Technician</button>

@@ -24,11 +24,11 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         }
         [HttpGet]
         public IActionResult Add()
-        {
-           
-            ViewBag.listOfCountry = context.Country.OrderBy(c => c.CountryId).ToList();
-            ViewBag.Countries = context.Country
-                .OrderBy(c => c.CountryId).ToList();
+        {    
+          //  ViewBag.listOfCountry = context.Country.OrderBy(c => c.CountryId).ToList();
+            ViewData["CountryId"] = new SelectList(context.Country, "CountryId", "Name");
+          //  ViewBag.Countries = context.Country
+           //     .OrderBy(c => c.CountryId).ToList();
             ViewBag.Action = "Add";
            
             return View("Edit", new Customer());
@@ -61,6 +61,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
+            var selectedIds = Request.Form["CountryId"];
             ViewBag.Countries = context.Country
                 .OrderBy(c => c.CountryId).ToList();
             if (ModelState.IsValid)
@@ -78,6 +79,7 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             }
             else
             {
+                ViewData["CountryId"] = new SelectList(context.Country, "CountryId", "Name");
                 ViewBag.Action = (customer.CustomerId == 0) ? "Add" : "Edit";
                 return View(customer);
             }
