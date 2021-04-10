@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GBCSporting2021__TEAM_MYK_.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace GBCSporting2021__TEAM_MYK_.Controllers
 {
@@ -19,12 +20,12 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         public IActionResult Get()
         {
             var techs = context.Customers.OrderBy(t => t.CustomerId).ToList();
-            ViewBag.listOfTech = techs;
+            ViewBag.listOfCust = techs;
             ViewBag.Action = "Select";
             return View();
         }
         [HttpGet]
-        public IActionResult Registrations(int id)
+        public IActionResult Registrations(int? id)
         {
             if (id == 0)
             {
@@ -33,15 +34,20 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
             }
             else
             {
-                ViewData["ProudctId"] = new SelectList(context.Products, "ProductId", "Name");
-                ViewBag.Customer = context.Customers.Find(id);
-                Registration Registration = new Registration();
-                Registration.customer = context.Customers;
-                Registration.products = context.Products;
-                ViewBag.Registrations = Registration;    
+                List<Registration> registrations = context.Registrations
+                    .Include(r => r.Product)
+                    .Include(r => r.Customer)
+                    .Where(r => r.Customer.CustomerId == id)
+                    .OrderBy(c => c.RegistrationId).ToList();
 
-                return View("Registrations");
+                ViewData["ProudctId"] = new SelectList(context.Products, "ProductId", "Name");
+
+                ViewBag.Customer = context.Customers.Find(id);
+
+                return View("Registrations", registrations);
             }
         }
+
+
     }
 }

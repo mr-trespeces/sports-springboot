@@ -60,13 +60,13 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewData["CustomerId"] = new SelectList(context.Customers, "CustomerId", "Slug");
+            ViewData["ProductId"] = new SelectList(context.Products, "ProductId", "Name");
+            ViewData["TechnicianId"] = new SelectList(context.Technicians, "TechnicianId", "Name");
+
             ViewBag.Action = "Edit";   
                    var inci = context.Incidents
                       .FirstOrDefault(c => c.IncidentId == id);
-
-            ViewData["CustomerId"] = new SelectList(context.Customers, "CustomerId", "Name");
-            ViewData["ProductId"] = new SelectList(context.Products, "ProductId", "Name");
-            ViewData["TechnicianId"] = new SelectList(context.Technicians, "TechnicianId", "Name");
 
             return View(inci);
         }
@@ -89,14 +89,19 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
         [HttpPost]
         public IActionResult Edit(Incident incident)
         {
+            ViewData["CustomerId"] = new SelectList(context.Customers, "CustomerId", "Slug");
+            ViewData["ProductId"] = new SelectList(context.Products, "ProductId", "Name");
+            ViewData["TechnicianId"] = new SelectList(context.Technicians, "TechnicianId", "Name");
+
             var techId = Request.Form["TechnicianId"];
             var prodId = Request.Form["ProductId"];
             var custId = Request.Form["CustomerId"];
 
             if (ModelState.IsValid)
-            {
+            {    
                 if (incident.IncidentId == 0)
                 {
+
                     context.Incidents.Add(incident);
                 }
                 else

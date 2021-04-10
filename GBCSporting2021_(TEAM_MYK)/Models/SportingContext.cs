@@ -17,6 +17,7 @@ namespace GBCSporting2021__TEAM_MYK_.Models
         public DbSet<Technician> Technicians { get; set; }
         public DbSet<Country> Country { get; set; }
         public DbSet<Incident> Incidents { get; set; }
+        public DbSet<Registration> Registrations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -152,6 +153,34 @@ namespace GBCSporting2021__TEAM_MYK_.Models
                     CountryId = 3,
                     Email = "kent.pedro@georgebrown.ca",
                     Phone = "4161932185"
+                });
+
+            modelBuilder.Entity<Registration>().HasData(
+               new Registration     
+               {
+                   RegistrationId = 1,
+                   CustomerId = 1,
+                   ProductId = 1,
+               },
+                new Registration
+                {
+                    RegistrationId = 2,
+                    CustomerId = 1,
+                    ProductId = 2,
+                },
+                new Registration
+                {
+                    RegistrationId = 3,
+                    CustomerId = 2,
+                    ProductId = 1,
+
+                },
+                new Registration
+                {
+                    RegistrationId = 4,
+                    CustomerId = 3,
+                    ProductId = 2,
+
                 });
         }
     }

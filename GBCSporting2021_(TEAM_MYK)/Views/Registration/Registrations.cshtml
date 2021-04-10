@@ -1,11 +1,7 @@
-﻿@model Registration
+﻿@model IEnumerable<Registration>
 @{ ViewBag.Title = "Registrations"; 
     }
 <br />
-<br />
-<h2></h2>
-
-
 <div class="container pb-10">
     <div class="col col-12 col-md-8">
         <h2 class="text-dark">Customer: @ViewBag.Customer.Firstname @ViewBag.Customer.Lastname</h2>
@@ -20,27 +16,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (Product product in ViewBag.Registrations.products)
+                    <h4>@TempData["message"]</h4>
+                    @foreach (Registration registration in Model)
                     {
-                        <tr>
-                            <td>@product.Name</td>
-                            <td class="align-content-">
-                                <a class="btn btn-danger" asp-controller="Registration" asp-action="Delete" asp-route-id="@product.ProductId">Delete</a>
-                            </td>
-                        </tr>
+                <tr>
+                    <td>@registration.Product.Name</td>
+                            <td class="align-content-center">
+                <a class="btn btn-danger" asp-controller="Registration" asp-action="Delete" asp-route-id="RegistraionId">Delete</a>
+            </td>       
+                </tr>
                     }
                 </tbody>
             </table>
         </div>
-        <h2>Products: </h2>
-        <form>
+        <h4>Products: </h4>
+        <form asp-controller="Registration" asp-action="Registrations" method="post">
             <div class="col-md-12">
                 <div class="input-group mb-6">
                     <label class="input-group-text">Choose Product:</label>
-                    <select asp-for="products" id="products" name="products" class="form-select" asp-items="ViewBag.ProudctId">
+                    <select id="ProductId" name="ProductId" class="form-select" asp-items="ViewBag.ProudctId">
                         <option selected>--  Select Product  --</option>
                     </select>
                 </div>
-            </div>
+                <br />
+                <button class="btn btn-primary" type="submit">Register</button>
+            </div>  
         </form>
     </div>
+</div>
