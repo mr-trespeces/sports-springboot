@@ -25,7 +25,9 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
                 var inci = context.Incidents
                    .Include(c => c.Customer)
                    .Include(c => c.Product)
-                   .Where(c => c.DateClosed == null);
+                   .Where(c => c.DateOpened == c.DateClosed);
+
+                ViewBag.Filter = "openincidents";
                 return View("List", inci);
             }
             else if(filter == "unassigned"){
@@ -33,13 +35,15 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
                     .Include(c => c.Customer)
                     .Include(c => c.Product)
                     .Where(c => c.TechnicianId == null);
+                ViewBag.Filter = "unassigned";
                 return View("List", inci);
             }
             else
             {
+                ViewBag.Filter = "all";
                 var inci = context.Incidents
-                    .Include(c => c.Customer)
-                    .Include(c => c.Product);
+                .Include(c => c.Customer)
+                .Include(c => c.Product);
                 return View("List", inci);
             }
 

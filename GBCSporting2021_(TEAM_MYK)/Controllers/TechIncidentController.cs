@@ -12,6 +12,8 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
     public class TechIncidentController : Controller
     {
 
+        const string SessionName = "";
+        const string SessionId = "";
         private SportingContext context { get; set; }
 
         public TechIncidentController(SportingContext ctx)
@@ -21,21 +23,51 @@ namespace GBCSporting2021__TEAM_MYK_.Controllers
 
         public IActionResult Get()
         {
-            var techs = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
-            ViewBag.listOfTech = techs;
-            ViewBag.Action = "Select";
-            return View();
+            if (HttpContext.Session.GetString(SessionName) != null)
+            {
+                return View("List");
+            }
+            else
+            {
+                var techs = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
+                ViewBag.listOfTech = techs;
+                ViewBag.Action = "Select";
+                return View();
+            }
         }
         
 
         [HttpGet]
         public IActionResult List(int id )
         {
-                ViewBag.Incident = context.Incidents
-                .Include(i => i.Customer)
-                .Include(i => i.Product)
-                .Where(c => c.TechnicianId == id).ToList();              
-            return View("List");
+            var techId = context.Incidents
+            .Include(c => c.Customer)
+            .Include(c => c.Product)
+            .Where(t => t.TechnicianId == id).ToList();
+
+            ViewBag.Incident = techId;
+            var assignedTech = context.Technicians
+                                .FirstOrDefault(t => t.TechnicianId == id);
+
+            if (assignedTech != null)
+            {
+                HttpContext.Session.SetString(SessionName, assignedTech.Name);
+                HttpContext.Session.SetInt32(SessionId, assignedTech.TechnicianId);
+
+                ViewBag.Name = HttpContext.Session.GetString(SessionName.ToString());
+                ViewBag.Age = HttpContext.Session.GetInt32(SessionId);
+                return View("List");
+            }
+            else
+            {
+                ViewBag.Message = "Choose Technician";
+                return View("Get");
+            }
+
+
+
+
+
         }
 
       /*   [HttpPost]
